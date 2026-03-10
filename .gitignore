@@ -1,0 +1,15 @@
+# Ignore backend secrets
+frontend/.env
+backend/.env
+
+# Ignore node_modules folders
+frontend/node_modules/
+backend/node_modules/
+
+
+# Optional: ignore build/dist folders
+frontend/dist/
+admin/dist/
+
+# Optional: log files
+*.log
