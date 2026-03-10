@@ -11,7 +11,7 @@ import { useAppContext } from '../AppContext';
     
 const BookDetails = () => {
     const {id}=useParams();
-    const {navigate,carDetails,returnDate,pickupDate}=useAppContext();
+    const {navigate,carDetails,returnDate,pickupDate,loading}=useAppContext();
 
     const totalDay=Math.ceil((new Date(returnDate) - new Date(pickupDate)) /(1000 * 60 * 60 * 24));
     const pricecalc=(totalDay == 0 ? 1 : totalDay)*carDetails.pricePerDay;
@@ -38,6 +38,7 @@ const BookDetails = () => {
 
 
     const handlebookingAndPayment=async()=>{
+        loading(true);
         try{
             const payload={car:id,...Data,pickupDate,returnDate,totalPrice}
             toast.success('Redirecting to payment ...');
@@ -63,6 +64,8 @@ const BookDetails = () => {
 
         }catch(err){
             console.log(err);
+        }finally{
+            loading(false);
         }
     }
 
@@ -158,7 +161,7 @@ const BookDetails = () => {
                             </ul>    
                         </div>   
                         <p className='flex items-center gap-2'><input type='checkbox' required/>I agree to the <span className='text-red-500'>Terms & Conditions</span></p>  
-                    <button type='button' onClick={handlebookingAndPayment} className='cursor-pointer mt-5 w-full lg:max-w-1/2 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 active:scale-95 transition-transform duration-200'>Confirm Booking</button>
+                    <button type='button' onClick={handlebookingAndPayment} disabled={loading} className='cursor-pointer mt-5 w-full lg:max-w-1/2 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 active:scale-95 transition-transform duration-200 disabled:cursor-not-allowed disabled:bg-gray-500'>{loading?'Confitm Booking .... ': 'Confirm Booking'}</button>
                 </div>
 
             </form> 

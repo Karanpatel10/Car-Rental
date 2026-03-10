@@ -22,6 +22,7 @@ export const webhookHandler=async(req,res)=>{
 
     if (event.type === 'payment_intent.succeeded') {
         const paymentIntent = event.data.object;
+        const metadata=paymentIntent.metadata;
         console.log('PaymentIntent succeeded:', paymentIntent.id);
         console.log('Metadata:', paymentIntent.metadata);
     
@@ -31,7 +32,7 @@ export const webhookHandler=async(req,res)=>{
             const carData = await Cars.findById(metadata.car);
 
 
-                await Booking.create({
+               const booking = await Booking.create({
                     car: metadata.car,
                     // user: metadata.userId || null, // optional, if you sent userId
                     owner: carData.owner,
@@ -43,10 +44,10 @@ export const webhookHandler=async(req,res)=>{
                     price: metadata.totalPrice,
                     address: metadata.address || '',
                     specialInstruction: metadata.specialInstruction || '',
-                    payment: session.payment_intent,
+                    payment: paymentIntent.id,
                     status: 'confirmed'
                 });
-                    console.log(`Booking created for payment: ${session.payment_intent}`);
+                    console.log(`Booking created for payment: ${booking._id}`);
             } catch(err){
                     console.error("Error creating booking:", err.message);
                     return res.status(500).send("Internal Server Error"); 

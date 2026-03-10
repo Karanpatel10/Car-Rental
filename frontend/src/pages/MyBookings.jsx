@@ -26,6 +26,11 @@ const MyBookings = () => {
     useEffect(()=>{
         if(!user) return;
        fetchMyBooking(); 
+
+       const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') === 'true') {
+                toast.success("Booking confirmed!");
+            }
     },[user])
 
     return (
