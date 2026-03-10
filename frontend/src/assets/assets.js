@@ -57,7 +57,7 @@ import info_banner3 from "./infobanner3.webp"
 import info_banner4 from "./infobanner4.webp"
 import info_banner5 from "./infobanner5.webp"
 import info_banner6 from "./infobanner6.webp"
-import contact_banner from "./Contact-banner.jpg"
+import contact_banner from "./contact-banner.jpg"
 import sheffer_banner from "./sheffer_banner.webp"
 import about_top from "./abouttop_banner.webp"
 
