@@ -3,9 +3,7 @@ const stripe_credential=new Stripe(process.env.STRIPE_SECRET_KEY)
 
 export  const createPaymentIntent=async(req,res)=>{
 
-    const frontend_url=process.env.NODE_ENV === 'development'?`http://localhost:5173`:`https://g91450s2-5174.use2.devtunnels.ms`
-    
-    // const frontend_url=`http://localhost:5173`;
+    const frontend_url = process.env.FRONTEND_URL || 'http://localhost:5173';
     
     try{
         
