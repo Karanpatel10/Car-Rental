@@ -11,7 +11,7 @@ import { useAppContext } from '../AppContext';
     
 const BookDetails = () => {
     const {id}=useParams();
-    const {navigate,carDetails,returnDate,pickupDate,loading}=useAppContext();
+    const {navigate,carDetails,returnDate,pickupDate,loading,setLoading}=useAppContext();
 
     const totalDay=Math.ceil((new Date(returnDate) - new Date(pickupDate)) /(1000 * 60 * 60 * 24));
     const pricecalc=(totalDay == 0 ? 1 : totalDay)*carDetails.pricePerDay;
@@ -38,7 +38,7 @@ const BookDetails = () => {
 
 
     const handlebookingAndPayment=async()=>{
-        loading(true);
+        setLoading(true);
         try{
             const payload={car:id,...Data,pickupDate,returnDate,totalPrice}
             toast.success('Redirecting to payment ...');
@@ -65,7 +65,7 @@ const BookDetails = () => {
         }catch(err){
             console.log(err);
         }finally{
-            loading(false);
+            setLoading(false);
         }
     }
 
