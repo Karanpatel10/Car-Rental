@@ -8,6 +8,7 @@ export  const createPaymentIntent=async(req,res)=>{
     try{
         
         const {items,metadata}=req.body;
+        metadata.user=req.user._id;
         const line_items=items.map((item)=>({
             price_data:{
                 currency:'usd',

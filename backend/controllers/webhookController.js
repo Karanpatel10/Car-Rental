@@ -34,6 +34,7 @@ export const webhookHandler = async (req, res) => {
 
       const booking = await Booking.create({
         car: metadata.car,
+        user: metadata.user,
         owner: carData.owner,
         fullname: metadata.fullname,
         email: metadata.email,
