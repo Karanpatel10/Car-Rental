@@ -72,9 +72,9 @@ const SDashboard = () => {
                     <p className='text-gray-400'>Recent Bookings</p>
                     <p className='text-gray-400 mb-4'>Latest customer bookings</p>
                   {dashData?.recentBooking.map((book,index)=>(
-                    <div key={index} className='grid grid-cols-1 md:grid-cols-4 items-center p-2 md:gap-6' >
+                    <div key={index} className='grid grid-cols-4 md:grid-cols-4 items-center md:p-2 justify-between' >
                         <NotebookText className='text-primary '/>
-                        <div className='flex flex-col items-start'>
+                        <div className='flex flex-col flex-wrap items-start'>
                           <p>{book.car.brand}&nbsp;{book.car.model}</p> 
                           <p>{book.car.createdAt.split('T')[0]}</p>
                         </div>

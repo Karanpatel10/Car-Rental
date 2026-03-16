@@ -17,13 +17,13 @@ export default function Locations() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-20  md:px-0">
+    <div className="max-w-6xl mx-auto  md:p-20 p-8">
 
        {/* Heading */}
       <Title title="Our Service Areas" subtitle=" We currently provide services in the following cities. Click a city to view it on the map."/>
 
 
-      <div className="grid md:grid-cols-2 gap-15">
+      <div className="grid md:grid-cols-2 gap-20 md:mt-20">
 
         {/* City List */}
         <div>
@@ -35,7 +35,7 @@ export default function Locations() {
             <div
               key={index}
               onClick={() => showCity(city)}
-              className="flex flex-gap-4 cursor-pointer rounded-lg p-4 mb-3 hover:bg-blue-200 transition"
+              className="flex gap-4 cursor-pointer rounded-lg p-4 mb-3 hover:bg-blue-200 transition"
             >
               <MapPinCheckInside className="text-primary"/>{city}
             </div>

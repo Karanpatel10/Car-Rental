@@ -14,7 +14,7 @@ const Section2 = () => {
       <Title title="Featured Vehicles" subtitle="Explore our selection of premium vehicles available for your next adventure"/>
       </motion.div>
       {/* Cards */}
-      <div className='mt-18 flex flex-wrap justify-center md:justify-between gap-20 focus:outline-none'>
+      <div className='mt-18 flex flex-wrap justify-center lg:justify-between gap-20 focus:outline-none'>
         {cars?.slice(0,3).map((car)=>{
           return(
             <div role="button" key={car._id} onClick={()=>navigate(`/car-details/${car._id}`)}>

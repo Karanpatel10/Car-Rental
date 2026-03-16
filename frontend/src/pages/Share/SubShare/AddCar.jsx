@@ -142,7 +142,7 @@ const AddCar = () => {
             </div>
           
                 
-         <button type='submit' disabled={loading} className='cursor-pointer bg-blue-600 text-white py-3 px-6 rounded-sm hover:bg-blue-700 active:scale-95 transition-transform duration-200 max-w-[25%] disabled:opacity-60 disabled:cursor-not-allowed'>{loading?"Adding ...":"Add Car"}</button>
+         <button type='submit' disabled={loading} className='cursor-pointer bg-blue-600 text-white py-3 px-6 rounded-sm hover:bg-blue-700 active:scale-95 transition-transform duration-200 max-w-[200px] disabled:opacity-60 disabled:cursor-not-allowed'>{loading?"Adding ...":"Add Car"}</button>
         </form>
       </div>
    

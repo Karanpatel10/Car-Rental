@@ -51,7 +51,7 @@ const CarDetails = () => {
       {/* Car details content */}
       <div className="flex flex-col py-10">
         <div className='grid grid-cols-2 gap-7 '>
-            <img src={carDetails.image[mainImage]} alt="Car Image" className='w-full h-150  object-contain rounded-xl col-span-2 lg:col-span-1'/>
+            <img src={carDetails.image[mainImage]} alt="Car Image" className='w-full max-h-150  object-contain rounded-xl col-span-2 lg:col-span-1'/>
           <div className='hidden lg:grid lg:grid-cols-2 gap-5'>
             {
               [...Array(4)].map((_, index) => (

@@ -77,7 +77,7 @@ const SMBooking=()=>{
                         <p>{data.pickupDate.toString().split('T')[0]} To {data.returnDate.toString().split('T')[0]}</p>
                       </td>
                       <td className='p-3'>{currency}{data.price}</td>
-                      <td><span className='bg-gray-200/70 rounded-sm p-2'>Offline</span></td>
+                      <td><span className={`${data.payment !== 'unpaid' ? 'bg-green-200 text-green-600' : 'bg-red-200 text-red-600'} rounded-sm p-2`}>{data.payment !== 'unpaid' ? 'Paid' : 'Unpaid'}</span></td>
                       <td className='p-3'>
                         <div className='flex flex-row gap-10 justify-end'>
                            {data.status === 'pending'? <select className='p-2 outline-none border border-borderColor rounded-sm' value={data.status} onChange={(e)=>changeUpdateStatus(data._id,e.target.value)} >

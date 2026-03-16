@@ -16,12 +16,14 @@ const {
   listIconColored
 } = assets
 
-const OwnerSidebar = () => {
-    // const navigate =useNavigate();
+const OwnerSidebar = ({issideopen}) => {
+   
     const {navigate,isOwner}=useAppContext()
+    
     const location =useLocation()
 
     const [profileimage,setProfileImage]=useState(null);
+   
 
     const ownerMenuLinks = [
         { name: "Dashboard", path: isOwner?"/owner":"/admin", icon: dashboardIcon, coloredIcon: dashboardIconColored },
@@ -32,36 +34,43 @@ const OwnerSidebar = () => {
     ].filter(Boolean)
 
   return (
-    <div className=' w-60 h-screen gap-6 flex flex-col '>
+    <div >
 
-        <div className='flex flex-col items-center relative '>
-            <label htmlFor='image' className='relative cursor-pointer group'>
-                <img src ={profileimage?URL.createObjectURL(profileimage):dummyUserData.image} alt='owner-profile' className='w-25 h-25 rounded-full object-cover'/>
-                <input type='file' id='image' accept='image/*' hidden onChange={(e)=>setProfileImage(e.target.files[0])}/>
-                
-                <div className='absolute inset-0 hover:bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 cursor-pointer rounded-full'>
-                    <UserPen className='w-6 h-6 text-white' />
-                </div>
-                
-            </label>
-                {
-                    profileimage && <button className='text-sm text-green-400 cursor-pointer absolute flex justify-end items-start right-0 bg-primary/10 text-primary font-bold p-2 rounded-sm' onClick={()=>setProfileImage(null)}>Save</button>
-                }
-            <p>{dummyUserData.name}</p>
-        </div>
+        
+        {/* Sidebar Content */}
 
-        <div>
-            {
-            ownerMenuLinks.map((link, index) => (
-                <div key={index} onClick={() => navigate(link.path)} className={`flex flex-row cursor-pointer gap-4 px-4 py-5  active:scale-95 ${location.pathname === link.path ? 'bg-primary/20 text-primary border-r-primary border-r-10' : ''}`}>
-                
-                   <img src={link.coloredIcon} alt={link.name} className='w-5 h-5 text-primary' />
-                   {link.name}
-                
-                </div>
-            ))
-        }
-        </div>
+            <div className={`${issideopen ? 'hidden' : 'flex'} relative transition duration-300 w-60 h-screen gap-6 md:flex flex-col   items-center py-10 border-r border-borderColor`}>
+               
+                    <div className='flex flex-col items-center relative '>
+                        <label htmlFor='image' className='relative cursor-pointer group'>
+                            <img src ={profileimage?URL.createObjectURL(profileimage):dummyUserData.image} alt='owner-profile' className='w-25 h-25 rounded-full object-cover'/>
+                            <input type='file' id='image' accept='image/*' hidden onChange={(e)=>setProfileImage(e.target.files[0])}/>
+                            
+                            <div className='absolute inset-0 hover:bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 cursor-pointer rounded-full'>
+                                <UserPen className='w-6 h-6 text-white' />
+                            </div>
+                            
+                        </label>
+                            {
+                                profileimage && <button className='text-sm cursor-pointer absolute flex justify-end items-start right-0 bg-primary/10 text-primary font-bold p-2 rounded-sm' onClick={()=>setProfileImage(null)}>Save</button>
+                            }
+                        <p>{dummyUserData.name}</p>
+                    </div>
+
+                    <div>
+                        {
+                        ownerMenuLinks.map((link, index) => (
+                            <div key={index} onClick={() => navigate(link.path)} className={`flex flex-row cursor-pointer gap-4 px-10 py-5  active:scale-110 ${location.pathname === link.path ? 'bg-primary/20 text-primary border-r-primary border-r-10' : ''}`}>
+                            
+                            <img src={link.coloredIcon} alt={link.name} className='text-primary' />
+                            {link.name}
+                            
+                            </div>
+                        ))
+                    }
+                    </div>
+           
+            </div>
     </div>
   )
 }

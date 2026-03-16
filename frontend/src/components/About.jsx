@@ -7,10 +7,10 @@ const About=()=>{
 
         
         <div className='flex flex-col '>
-            <section className='grid grid-cols-1 md:grid-cols-2 bg-black text-white p-10 md:p-30 gap-35'>
+            <section className='grid grid-cols-1 md:grid-cols-2 bg-black text-white p-10 md:p-30 gap-15 md:gap-35'>
                 <div className='flex flex-col justify-center gap-10'>
                     <h1 className='text-3xl md:text-6xl'>Experience Premium Luxury Car Rentals Today</h1>
-                    <p className='text-2xl'>Exclusive luxury, wedding, corporate, and event car rentals with personalized packages and 24/7 support</p>
+                    <p className='text-lg md:text-2xl'>Exclusive luxury, wedding, corporate, and event car rentals with personalized packages and 24/7 support</p>
                 </div>
                 <div className='flex flex-col'>
                         <div className='flex flex-row justify-center gap-2'>
@@ -28,7 +28,7 @@ const About=()=>{
                 </div>
             </section>
            
-    <section className="p-6 text-black rounded-2xl shadow-lg hover:shadow-xl transition px-16 md:px-16 lg:px-35 py-35">
+    <section className="text-black rounded-2xl shadow-lg hover:shadow-xl transition px-16 md:px-16 lg:px-35 py-10 md:py-35">
       
       {/* Intro */}
       <div className="text-center max-w-3xl mx-auto">
@@ -36,7 +36,7 @@ const About=()=>{
           About Our Car Rentals
         </h1>
         <p className="text-lg sm:text-xl mt-4 text-gray-500">
-          At [Your Company Name], we believe that renting a car should be simple, 
+          At SafeRide, we believe that renting a car should be simple, 
           affordable, and fun. From compact cars to luxury vehicles, we provide 
           the perfect ride for every journey — whether it’s a business trip, 
           weekend getaway, or long adventure.

@@ -5,7 +5,7 @@ import { assets } from "../assets/assets";
 const ContactUs = () => {
   return (
     <div>
-          <div className="relative w-full aspect-[4/1] overflow-hidden ">
+          <div className="relative w-full md:aspect-4/1 overflow-hidden ">
                     <img
                       src={assets.contact_banner}
                       alt="contact_us_banner"
@@ -16,7 +16,7 @@ const ContactUs = () => {
           </div>
 
    
-            <section className="min-h-screen px-4 md:px-16 lg:px-24 xl:px-32 w-full py-25">
+            <section className="min-h-screen p-8 md:px-16 lg:px-24 xl:px-32 w-full md:py-25">
               <h1  className='mx-auto text-center text-black font-extrabold text-2xl'>Contact Us</h1>
             
             <h1 className="text-4xl font-bold text-primary text-center mx-auto mt-4">Rent Your Ride Today</h1>

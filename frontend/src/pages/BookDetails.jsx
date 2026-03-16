@@ -93,7 +93,7 @@ const BookDetails = () => {
                     <div className='font-extrabold text-2xl flex justify-between'><span>{carDetails.brand}</span><span className='font-light text-end'>{carDetails.pricePerDay}$/Day</span></div>  
 
                     {/* order details */}
-                    <div className='grid grid-cols-2 shadow-2xl bg-gray-300 rounded-2xl p-10 my-10 gap-14'>
+                    <div className='grid md:grid-cols-2 shadow-2xl bg-gray-300 rounded-2xl p-10 my-10 gap-14'>
                         <img src={carDetails.image[0]} alt='car-image'/>
                         <div className='flex flex-col gap-3'>
                             <p className='border-b-2 border-gray-400'>{carDetails.brand}</p>

@@ -44,35 +44,22 @@ const Section1 = () => {
   }
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative md:h-screen w-full flex flex-col overflow-hidden">
 
       {/* Background video */}
-      <motion.video
-        src={mainvideo}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        className="absolute inset-0 w-full h-full object-cover z-0"
-      />
+      <motion.video src={mainvideo} autoPlay muted loop playsInline preload="auto" className="order-2 md:absolute inset-0 w-full h-full object-contain md:object-cover z-0 bg-black"/>
 
       {/* Overlay */}
-       <div className="absolute inset-0 bg-black/40 z-10"/>
+       <div className="absolute inset-0 md:bg-black/40 z-10"/>
 
       {/* Content */}
-      <div className="relative z-20 flex flex-col items-center justify-center h-full text-center gap-5 text-white px-4">
+      <div className="order-1 relative z-20 flex flex-col items-center justify-center h-full text-center bg-black md:bg-transparent gap-5 text-white p-10">
 
-        
-         <TypeAnimation sequence={['Experience Automotive Excellence ... ', 2000,'Where Luxury Meets Performance ... ',2000,'Driven by Elegance ... ',2000,'The Pinnacle of Automotive Luxury ... ',2000]} speed={40} wrapper="span" cursor={false}  repeat={Infinity} className="text-xl md:text-5xl font-semibold"/> 
-      
+        <div className='flex item-center justify-center min-h-20 md:min-h-8'>
+         <TypeAnimation sequence={['Experience Automotive Excellence ... ', 2000,'Where Luxury Meets Performance ... ',2000,'Driven by Elegance ... ',2000,'The Pinnacle of Automotive Luxury ... ',2000]} speed={40} wrapper="span" cursor={false}  repeat={Infinity} className="max-w-full text-3xl md:text-5xl font-semibold"/> 
+        </div>
           
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          className="max-w-2xl text-lg text-white/90"
-        >
+        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="max-w-2xl text-lg text-white/90">
           Premium vehicles • Affordable pricing • Easy booking
         </motion.p>
 
@@ -87,20 +74,7 @@ const Section1 = () => {
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
-          className="
-            relative backdrop-blur-2xl bg-white/10
-            border border-white/30
-            rounded-3xl md:rounded-full
-            px-6 py-6
-            flex flex-col md:flex-row
-            items-center gap-6
-            shadow-2xl
-            max-w-6xl 
-            text-white
-            hover:shadow-[0_0_40px_rgba(255,255,255,0.25)]
-            transition
-          "
-        >
+          className="relative backdrop-blur-2xl bg-white/10 border border-white/30 rounded-3xl md:rounded-full px-6 py-6 flex flex-col md:flex-row items-center gap-6 shadow-2xl max-w-6xl text-white hover:shadow-[0_0_40px_rgba(255,255,255,0.25)] transition">
 
           {/* Location */}
           <div className="flex flex-col px-2 w-full md:w-auto">
@@ -111,7 +85,7 @@ const Section1 = () => {
               required
               value={pickupCity}
               onChange={(e) => setPickupCity(e.target.value)}
-              className="bg-transparent outline-none text-white"
+              className="cursor-pointer bg-transparent outline-none text-white scheme-dark"
             >
               <option value="" disabled className="text-black">
                 Select city
@@ -128,15 +102,17 @@ const Section1 = () => {
 
           {/* Pickup Date */}
           <div className="flex flex-col px-2 w-full md:w-auto">
-            <label className="text-xs font-semibold text-white/80">
+            <label htmlFor="pickupDate" className="text-xs font-semibold text-white/80">
               Pick-up Date
             </label>
             <input
               type="date"
+              id="pickupDate"
               value={pickupDate}
               onChange={(e) => setPickupDate(e.target.value)}
+              onClick={(e)=>e.target.showPicker()}
               min={new Date().toISOString().split('T')[0]} // Ensure pickup date cannot be in the past
-              className="bg-transparent outline-none text-white [color-scheme-dark]"
+              className="cursor-pointer bg-transparent outline-none text-white scheme-dark"
               required
             />
           </div>
@@ -145,15 +121,17 @@ const Section1 = () => {
 
           {/* Return Date */}
           <div className="flex flex-col px-2 w-full md:w-auto">
-            <label className="text-xs font-semibold text-white/80">
+            <label htmlFor="returnDate" className="text-xs font-semibold text-white/80">
               Return Date
             </label>
             <input
               type="date"
+              id="returnDate"
               value={returnDate}
               onChange={(e) => setReturnDate(e.target.value)}
+              onClick={(e)=>e.target.showPicker()}
               min={pickupDate || new Date().toISOString().split('T')[0]} // Ensure return date cannot be before pickup date
-              className="bg-transparent outline-none text-white [color-scheme-dark]"
+              className="cursor-pointer bg-transparent outline-none text-white scheme-dark"
               required
             />
           </div>
