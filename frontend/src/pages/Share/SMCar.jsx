@@ -77,7 +77,7 @@ const SMCar = () =>{
             <tr className="bg-gray-100">
               <th className='p-3'>Car</th>
               <th className='max-md:hidden p-3'>Category</th>
-              <th className='p-3'>Price</th>
+              <th className='p-3 hidden md:block'>Price</th>
               <th className='max-md:hidden p-3'>Status</th>
               <th className='p-3 flex justify-end'>Actions</th>
             </tr>
@@ -99,7 +99,7 @@ const SMCar = () =>{
                             <td className='max-md:hidden p-3'>
                               <p>{data.category}</p>
                             </td>
-                            <td className='p-3'>{currency}&nbsp;{data.pricePerDay}</td>
+                            <td className='p-3 hidden md:table-cell'>{currency}&nbsp;{data.pricePerDay}</td>
                             <td className='max-md:hidden p-3 max-w-20'><span className={`p-2 rounded-md ${data.isAvailable ? 'text-green-600 bg-green-200' : 'text-red-600 bg-red-200'}`}>{data.isAvailable ? 'Available' : 'Not Available'}</span></td>
                             <td className='p-3'>
                               <div className='flex flex-row gap-10 justify-end'>

@@ -15,7 +15,7 @@ const SLayoutDashbrd=()=>{
                     <OwnerSidebar issideopen={issideopen}/>
                         <div className='flex-1 relative p-6 overflow-y-auto border-l border-l-gray-400'>
                             <button onClick={() => IsSetsideOpen(!issideopen)} className="absolute cursor-pointer top-5 left-0 md:hidden z-50 w-5 h-12  bg-primary text-white flex items-center justify-center rounded-r-xl">
-                                {issideopen ? <ChevronRight /> : <ChevronLeft />}
+                                {issideopen ? <ChevronLeft /> : <ChevronRight />}
                             </button>
                             <Outlet/>
                                 {

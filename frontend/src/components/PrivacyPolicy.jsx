@@ -8,7 +8,7 @@ const SectionHeading = ({children}) =>(
 
 const PrivacyPolicy = () => {
   return (
-    <div className='text-gray-500 text-justify max-w-7xl mx-auto py-20'>
+    <div className='text-gray-500 text-justify max-w-7xl mx-auto px-5 py-20'>
 This Privacy Policy ("Policy") discloses the privacy practices for Myles Automotive Technologies Private Limited ("Myles") website ("website"). Myles places paramount importance on maintaining the privacy of its customers'("User") personal information under the applicable laws in India.
 Please read this Policy carefully by accessing or using our website. The User hereby acknowledges that he has read, understood, and agrees to be bound to all the terms of this Policy and our website's terms of use before the User proceeds.
 Personal Information- What personal information is collected from the user?

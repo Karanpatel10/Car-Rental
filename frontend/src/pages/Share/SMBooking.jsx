@@ -5,7 +5,7 @@ import {useAppContext} from '../../AppContext'
 
 const SMBooking=()=>{
 
-    const {currency,axios,setBooking,fetchBookings,booking,user,setLoading}=useAppContext();
+    const {currency,axios,user,setLoading}=useAppContext();
     const [managebooking,setManageBooking]=useState()
 
 // fetch booking for admin and owner
@@ -51,7 +51,7 @@ const SMBooking=()=>{
         <Title title={'Manage Bookings'} subtitle={'View all bookings, update their details or remove them from the booking platform'}/>
       </div>
 
-      <div className='border border-borderColor w-full max-w-7xl rounded-md p-3 mt-6 overflow-x-auto gap-3'>
+      <div className='border border-borderColor w-full max-w-7xl rounded-md p-3 mt-6 overflow-x-auto md:gap-3'>
         <table className='w-full border-collapse text-left text-gray-600'>
           <thead>
             <tr className='bg-gray-100'>
@@ -68,7 +68,7 @@ const SMBooking=()=>{
                   managebooking.map((data,index)=>(
                   <tr key={index} className='border-t  border-borderColor '>
                       <td className='p-3'>
-                         <div className='flex flex-row gap-5'>
+                         <div className='flex flex-row flex-wrap md:gap-5'>
                             <img src={data.car.image} alt={`car${index}`} className='w-24 h-24 aspect-square rounded-md object-cover'/>
                             <p className='font-medium items-center flex'>{data.car.brand} {data.car.model}</p>  
                         </div>

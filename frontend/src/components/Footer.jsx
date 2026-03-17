@@ -17,8 +17,8 @@ const Footer=()=>{
            
         <motion.div initial={{opacity:0,y:30}} whileInView={{opacity:1,y:0}} transition={{duration:0.6}} className=' bg-lightblack md:p-5'>
             <motion.div initial={{opacity:0,y:30}} whileInView={{opacity:1,y:0}} transition={{duration:0.6,delay:0.2}} className='flex flex-wrap py-10 justify-between gap-5 md:gap-6 px-6 md:px-16 lg:px-24 xl:px-16 text-[#717171]'>
-                <div className='max-w-100'>
-                    <motion.img initial={{opacity:0}} whileInView={{opacity:1}} transition={{duration:0.5,delay:0.3}} src={assets.logo} alt="logo" className='mb-4 h-8 md:h-9' />
+                <div className='max-w-120'>
+                    <motion.img initial={{opacity:0}} whileInView={{opacity:1}} transition={{duration:0.5,delay:0.3}} src={assets.logo} alt="logo" className='mb-5 h-8 md:h-10  scale-550 pl-4'/>
                     <motion.p initial={{opacity:0}} whileInView={{opacity:1}} transition={{duration:0.5,delay:0.4}} className="text-sm max-w-95">
                         Premium Car offering the best vehicles at affordable prices.
                          Available 24/7 with easy online booking and customer support.

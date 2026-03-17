@@ -15,7 +15,7 @@ const optionlist={
 
 const AddCar = () => {
 
-  const {axios,currency,loading,setLoading,fetchCars}=useAppContext();
+  const {axios,loading,setLoading,fetchCars}=useAppContext();
   const [image,setImage]=useState([null,null,null,null]);
   const [car,setCar]=useState({brand:"",model:"",year:"",category:"",seating_capacity:0,fuelType:"",transmission:"",pricePerDay:0,location:"",description:""})
 
@@ -24,7 +24,7 @@ const AddCar = () => {
     setLoading(true)
     try{
       const formData=new FormData()
-          image.forEach((img, index) => {
+          image.forEach((img) => {
       if (img) formData.append('image', img); // 'images' matches your backend key
     });
       formData.append('carData',JSON.stringify(car));
@@ -56,7 +56,7 @@ const AddCar = () => {
 
           <div>
               {image.map((imgs,index)=>(
-                <div key={index} className='inline-block w-35 h-35 p-5'>
+                <div key={index} className='inline-block w-20 h-20 md:w-35 md:h-35 p-2 md:p-5'>
                 <label htmlFor={`car-image-${index}`} key={index}>
                   <img src={imgs ? URL.createObjectURL(imgs) : assets.upload_icon} alt='image1' className='cursor-pointer' />
                 </label>

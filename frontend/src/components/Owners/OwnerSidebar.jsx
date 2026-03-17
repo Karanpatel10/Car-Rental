@@ -39,7 +39,7 @@ const OwnerSidebar = ({issideopen}) => {
         
         {/* Sidebar Content */}
 
-            <div className={`${issideopen ? 'hidden' : 'flex'} relative transition duration-300 w-60 h-screen gap-6 md:flex flex-col   items-center py-10 border-r border-borderColor`}>
+            <div className={`${issideopen ? 'flex' : 'hidden'} relative transition duration-300 w-60 h-screen gap-6 md:flex flex-col   items-center py-10 border-r border-borderColor`}>
                
                     <div className='flex flex-col items-center relative '>
                         <label htmlFor='image' className='relative cursor-pointer group'>

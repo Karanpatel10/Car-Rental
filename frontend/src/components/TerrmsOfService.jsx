@@ -22,8 +22,8 @@ const dataList=[
 
 const TerrmsOfService = () => {
   return (
-    <div className='max-w-7xl mx-auto p-15 md:p-25'>
-        <div className='pb-5'><Title title="Rental Agreement - Terms of Service" className="text-2xl font-bold mb-4"/></div>
+    <div className='max-w-7xl mx-auto p-5 md:p-25'>
+        <div className='pt-5 pb-5'><h1 className="text-2xl font-bold mb-4">Rental Agreement - Terms of Service</h1></div>
         <ol className='list-decimal ml-6'>
         {dataList.map((data,index)=>(
             <div key={index} className='text-justify gap-4 flex flex-col'>

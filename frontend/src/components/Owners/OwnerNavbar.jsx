@@ -8,7 +8,8 @@ const OwnerNavbar = () => {
   return (
     <div className='border-b-gray-400 border-b py-6 px-5 md:px-10 flex justify-between items-center'>
        <div className='relative group'>
-        <Link to="/"><img src={assets.logo} alt='company_logo' className='w-35 h-10 lg:w-50 lg:h-15'/></Link>
+        <Link to="/"><img src={assets.logo} alt='company_logo' className='w-35 h-10 lg:w-40 lg:h-10 scale-450 object-contain
+        '/></Link>
           <div className='bg-black text-white p-2 rounded-xl pointer-events-none text-sm absolute translate-1 -right-7 opacity-0 group-hover:opacity-100 transition-all duration-200'>Home
             <span className='absolute -translate-4 right-3 border-l-8 border-r-8 border-b-8 border-b-black'/>
           </div>

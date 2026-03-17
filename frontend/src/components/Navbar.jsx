@@ -39,7 +39,7 @@ const Navbar = () => {
       {/* Company Logo */}
        <div className='w-35 h-20 lg:w-50 lg:h-25'>
          <NavLink to='/'>
-          <motion.img whileHover={{scale:1.05}} src={assets.logo} alt='Car_Logo' className='w-full h-full object-contain'/>
+          <motion.img whileHover={{scale:1.05}} src={assets.logo} alt='Car_Logo' className='w-full h-full object-contain scale-220'/>
         </NavLink>
        </div>
      

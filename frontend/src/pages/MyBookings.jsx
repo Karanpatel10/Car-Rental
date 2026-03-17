@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 
 const MyBookings = () => {
-    const{axios,user,loading,setLoading}=useAppContext();
+    const{axios,user,setLoading}=useAppContext();
     const[mybooking,setMyBooking]=useState([]);
 
     const fetchMyBooking=async()=>{
