@@ -60,7 +60,9 @@ import info_banner6 from "./infobanner6.webp"
 import contact_banner from "./contact-banner.jpg"
 import sheffer_banner from "./sheffer_banner.webp"
 import about_top from "./abouttop_banner.webp"
-
+import affordableicon from './affordableicon.png'
+import customercareicon from './customercarelogo.jpg'
+import RentalFleeticon from './RentalFleeticon.jpg'
 
 // CarLogo 
 
@@ -148,6 +150,9 @@ export const assets = {
     sheffer_banner,
     contact_banner,
     about_top,
+    customercareicon,
+    RentalFleeticon,
+    affordableicon,
 
     car_logos:[
     { logo: car_logo1,name:"Audi" },

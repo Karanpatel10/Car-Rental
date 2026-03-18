@@ -76,6 +76,7 @@ const SMCar = () =>{
           <thead>
             <tr className="bg-gray-100">
               <th className='p-3'>Car</th>
+              {user?.role === 'admin' && <th className='p-3'>Owner</th>}
               <th className='max-md:hidden p-3'>Category</th>
               <th className='p-3 hidden md:block'>Price</th>
               <th className='max-md:hidden p-3'>Status</th>
@@ -88,14 +89,19 @@ const SMCar = () =>{
                         manageCar.map((data)=>(
                         <tr key={data._id} className='border-t  border-borderColor '>
                             <td className='p-3'>
-                              <div className='flex flex-row'>
+                              <div className='flex flex-row flex-wrap items-center'>
                                 <img src={data.image[0]} alt={`car${data._id}`} className='w-24 h-24 aspect-square rounded-md object-cover'/>
                                 <div className='ml-4 flex flex-col justify-center'>
                                   <p className='font-medium'>{data.brand} {data.model}</p>
-                                  <p className='text-sm text-gray-500'>{data.seating_capacity} {data.transmission}</p>
+                                  <p className='text-sm text-gray-500 max-md:hidden'>{data.seating_capacity} {data.transmission}</p>
                                 </div>
                               </div>
                             </td>
+                            {user?.role === 'admin' && (
+                              <td className='p-3'>
+                                <p>{data.owner.name}</p>
+                              </td>
+                            )}
                             <td className='max-md:hidden p-3'>
                               <p>{data.category}</p>
                             </td>

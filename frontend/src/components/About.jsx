@@ -57,7 +57,7 @@ const About=()=>{
       <div className="m-16 grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {/* Fleet */}
         <div className="flex flex-col items-center text-center p-6 bg-white ring-1 ring-gray-200 rounded-2xl shadow-lg hover:scale-105 transform transition">
-          <img src={assets.fleetIcon} alt="Fleet" className="w-16 h-16 mb-4"/>
+          <img src={assets.RentalFleeticon} alt="Fleet" className="w-16 h-16 mb-4"/>
           <h3 className="text-xl font-semibold mt-2">Wide Fleet</h3>
           <p className="mt-2 text-gray-500">
             From compact cars to SUVs and luxury rides, we have the perfect vehicle 
@@ -67,7 +67,7 @@ const About=()=>{
 
         {/* Affordable Prices */}
         <div className="flex flex-col items-center text-center p-6 bg-white  ring-1 ring-gray-200 rounded-2xl shadow-lg hover:scale-105 transform transition">
-          <img src={assets.priceIcon} alt="Affordable Prices" className="w-16 h-16 mb-4"/>
+          <img src={assets.affordableicon} alt="Affordable Prices" className="w-16 h-16 mb-4"/>
           <h3 className="text-xl font-semibold mt-2">Affordable Prices</h3>
           <p className="mt-2 text-gray-500">
             Transparent pricing with no hidden fees. Rent by the day, week, or month 
@@ -77,7 +77,7 @@ const About=()=>{
 
         {/* 24/7 Support */}
         <div className="flex flex-col items-center text-center p-6 bg-white  ring-1 ring-gray-200 rounded-2xl shadow-lg hover:scale-105 transform transition">
-          <img src={assets.supportIcon} alt="Reliable Support" className="w-16 h-16 mb-4"/>
+          <img src={assets.customercareicon} alt="Reliable Support" className="w-16 h-16 mb-4"/>
           <h3 className="text-xl font-semibold mt-2">24/7 Support</h3>
           <p className="mt-2 text-gray-500">
             Our friendly team is always available to assist with bookings, queries, 

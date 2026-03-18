@@ -57,9 +57,12 @@ const SMBooking=()=>{
             <tr className='bg-gray-100'>
               <th className='p-3'>Car</th>
               <th className='max-md:hidden p-3'>Date Range</th>
+              {user?.role === 'admin' && (
+                <th className='p-3  text-center'>Booking User</th>
+              )}
               <th className='p-3'>Total</th>
               <th className='p-3'>Payment</th>
-              <th className='p-3 flex justify-end'>Actions</th>
+              <th className='p-3 text-center'>Actions</th>
               </tr>
            </thead>
            <tbody>
@@ -76,16 +79,21 @@ const SMBooking=()=>{
                       <td className='max-md:hidden p-3'>
                         <p>{data.pickupDate.toString().split('T')[0]} To {data.returnDate.toString().split('T')[0]}</p>
                       </td>
+                      {user?.role === 'admin' && (
+                        <td className='p-3 text-center'>
+                          <p>{data.user.name}</p>
+                        </td>
+                      )}
                       <td className='p-3'>{currency}{data.price}</td>
-                      <td><span className={`${data.payment !== 'unpaid' ? 'bg-green-200 text-green-600' : 'bg-red-200 text-red-600'} rounded-sm p-2`}>{data.payment !== 'unpaid' ? 'Paid' : 'Unpaid'}</span></td>
-                      <td className='p-3'>
-                        <div className='flex flex-row gap-10 justify-end'>
+                      <td className='p-3 text-center'><span className={`${data.payment !== 'unpaid' ? 'bg-green-200 text-green-600' : 'bg-red-200 text-red-600'} rounded-sm p-2`}>{data.payment !== 'unpaid' ? 'Paid' : 'Unpaid'}</span></td>
+                      <td className='p-3 text-end'>
+                        
                            {data.status === 'pending'? <select className='p-2 outline-none border border-borderColor rounded-sm' value={data.status} onChange={(e)=>changeUpdateStatus(data._id,e.target.value)} >
                               <option  value='pending'>Pending</option>
                               <option value='cancelled'>Cancle</option>
                               <option value='confirmed'>Confirmed</option>
                             </select>: <span className={`${data.status === 'confirmed' ? 'text-green-600 bg-green-200 ':'text-red-600 bg-red-200'} p-2 font-medium rounded-sm`}>{data.status}</span>}
-                        </div>
+                       
                       </td>
                     </tr>
                 ))

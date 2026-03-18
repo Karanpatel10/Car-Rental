@@ -85,7 +85,7 @@ const Section1 = () => {
               required
               value={pickupCity}
               onChange={(e) => setPickupCity(e.target.value)}
-              className="cursor-pointer bg-transparent outline-none text-white scheme-dark"
+              className="cursor-pointer bg-transparent outline-none text-white"
             >
               <option value="" disabled className="text-black">
                 Select city
@@ -112,7 +112,7 @@ const Section1 = () => {
               onChange={(e) => setPickupDate(e.target.value)}
               onClick={(e)=>e.target.showPicker()}
               min={new Date().toISOString().split('T')[0]} // Ensure pickup date cannot be in the past
-              className="cursor-pointer bg-transparent outline-none text-white scheme-dark"
+              className="cursor-pointer bg-transparent outline-none text-white"
               required
             />
           </div>

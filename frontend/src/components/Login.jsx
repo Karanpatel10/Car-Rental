@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 
 const Login=()=>{
     
-    const {setShowLogin,showLogin,axios,setToken,navigate,user}=useAppContext();
+    const {setShowLogin,axios,setToken,loading,setLoading}=useAppContext();
     const [state,setState]=useState("login"); // login or register
     const [name,setName]=useState("");
     const [email,setEmail]=useState("");
@@ -12,6 +12,7 @@ const Login=()=>{
 
     const onsubmitHandler=async(event)=>{
         event.preventDefault();
+        setLoading(true);
         try{
             const {data}= await axios.post(`/api/user/${state}`,{name,email,password})
             if(data.success){
@@ -24,6 +25,8 @@ const Login=()=>{
             }
         }catch(err){
            toast.error(err.message)
+        }finally{
+            setLoading(false);
         }
     }
 
@@ -56,8 +59,12 @@ const Login=()=>{
                     Create an account? <span onClick={() => setState("register")} className="text-primary cursor-pointer">click here</span>
                 </p>
             )}
-            <button type='submit' className="bg-primary hover:bg-primary-dull transition-all text-white w-full py-2 rounded-md cursor-pointer">
-                {state === "register" ? "Create Account" : "Login"}
+            <button type='submit' disabled={loading} className="bg-primary hover:bg-primary-dull transition-all text-white w-full py-2 rounded-md cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center">
+                {loading ? (
+    <span className="flex items-center gap-1">
+      Processing<span className="flex gap-0.5"><span className="animate-bounce">.</span><span className="animate-bounce delay-150">.</span><span className="animate-bounce delay-300">.</span></span>
+    </span>
+  ) : state === "register" ? "Create Account" : "Login"}
             </button>
         </form>
         </div>
