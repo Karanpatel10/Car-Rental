@@ -59,9 +59,7 @@ const BookDetails = () => {
                 window.location.href=paymentResponse.data.url;
             }else{
                 toast.error("Payment initiation failed");
-            }
-            
-
+            }           
         }catch(err){
             console.log(err);
         }finally{

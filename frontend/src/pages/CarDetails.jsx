@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
+import {useParams } from 'react-router-dom';
 import { assets} from '../assets/assets';
 import { ArrowLeft } from 'lucide-react';
 import Loading from '../components/Loading';
 import { useAppContext } from '../AppContext';
-import { cityList } from '../assets/assets'
 import toast from 'react-hot-toast';
 
 const CarDetails = () => {
@@ -14,26 +13,26 @@ const CarDetails = () => {
   const {id}=useParams();
  
   const [mainImage, setMainImage] = useState(0);
-  const [checking,setChecking]=useState(false)
+//   const [checking,setChecking]=useState(false)
 
 
- const handleCheckAvalibility=async(e)=>{
-  e.preventDefault();
-  try{
-    setChecking(true)
-    const {data}=await axios.post('/api/booking/check-avaliblity',{car:id,pickupCity,pickupDate,returnDate})
-    if(data.success){
-      console.log(data);
-      toast.success(data.message)
-    }else{
-      toast.error(data.message)
-    }
-  }catch(err){
-    toast.error(err.message)
-  }finally{
-    setChecking(false)
-  }
- }
+//  const handleCheckAvalibility=async(e)=>{
+//   e.preventDefault();
+//   try{
+//     setChecking(true)
+//     const {data}=await axios.post('/api/booking/check-avaliblity',{car:id,pickupCity,pickupDate,returnDate})
+//     if(data.success){
+//       console.log(data);
+//       toast.success(data.message)
+//     }else{
+//       toast.error(data.message)
+//     }
+//   }catch(err){
+//     toast.error(err.message)
+//   }finally{
+//     setChecking(false)
+//   }
+//  }
 
 
   useEffect(()=>{

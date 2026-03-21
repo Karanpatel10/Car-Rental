@@ -1,20 +1,21 @@
 import { useState } from 'react'
 import { useAppContext } from '../AppContext';
 import toast from 'react-hot-toast';
+import { Eye, EyeOff } from 'lucide-react';
 
 const Login=()=>{
     
-    const {setShowLogin,axios,setToken,loading,setLoading}=useAppContext();
-    const [state,setState]=useState("login"); // login or register
-    const [name,setName]=useState("");
-    const [email,setEmail]=useState("");
-    const [password,setPassword]=useState("");
+    const {setShowLogin,axios,setToken}=useAppContext();
+    const [loginLoading,setLoginLoading]=useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [form,setForm]=useState({state:"login",name:"",email:"",password:""}); // login or register
+    
 
     const onsubmitHandler=async(event)=>{
-        event.preventDefault();
-        setLoading(true);
+        event.preventDefault()
+        setLoginLoading(true);
         try{
-            const {data}= await axios.post(`/api/user/${state}`,{name,email,password})
+            const {data}= await axios.post(`/api/user/${form.state}`,{name:form.name,email:form.email,password:form.password})
             if(data.success){
                 setToken(data.token);
                 localStorage.setItem('token',data.token);
@@ -26,45 +27,48 @@ const Login=()=>{
         }catch(err){
            toast.error(err.message)
         }finally{
-            setLoading(false);
+            setLoginLoading(false)
         }
     }
 
     return(
-        <div className="w-full h-screen flex items-center justify-center bg-black/50 fixed top-0 left-0 right-0 z-100 text-sm" onClick={()=>setShowLogin(false)}>
+        <div className="w-full h-screen flex items-center justify-center bg-black/60  fixed top-0 left-0 right-0 z-100 text-sm" onClick={()=>setShowLogin(false)}>
             <form className="flex flex-col gap-4 m-auto items-start p-8 py-12 w-80 sm:w-[352px] text-gray-500 rounded-lg shadow-xl border border-gray-200 bg-white" onClick={(e)=>e.stopPropagation()} onSubmit={onsubmitHandler}>
             <p className="text-2xl font-medium m-auto">
-                <span className="text-primary">Welcome</span> {state === "login" ? "Login" : "Sign Up"}
+                <span className="text-primary">Welcome</span> {form.state === "login" ? "Login" : "Sign Up"}
             </p>
-            {state === "register" && (
+            {form.state === "register" && (
                 <div className="w-full">
                     <p>Name</p>
-                    <input onChange={(e) => setName(e.target.value)} value={name} placeholder="type here" className="border border-gray-200 rounded w-full p-2 mt-1 outline-primary" type="text" required />
+                    <input onChange={(e) => setForm({...form, name: e.target.value})} value={form.name} placeholder="type here" className="border border-gray-200 rounded w-full p-2 mt-1 outline-primary" type="text" required />
                 </div>
             )}
             <div className="w-full ">
                 <p>Email</p>
-                <input onChange={(e) => setEmail(e.target.value)} value={email} placeholder="type here" className="border border-gray-200 rounded w-full p-2 mt-1 outline-primary" type="email" required />
+                <input onChange={(e) => setForm({...form, email: e.target.value})} value={form.email} placeholder="type here" className="border border-gray-200 rounded w-full p-2 mt-1 outline-primary" type="email" required />
             </div>
-            <div className="w-full ">
+            <div className="w-full relative">
                 <p>Password</p>
-                <input onChange={(e) => setPassword(e.target.value)} value={password} placeholder="type here" className="border border-gray-200 rounded w-full p-2 mt-1 outline-primary" type="password" required />
+                <input onChange={(e) => setForm({...form, password: e.target.value})} value={form.password} placeholder="type here" className="border border-gray-200 rounded w-full p-2 mt-1 outline-primary" type={showPassword ? "text" : "password"} required />
+                <span className="absolute top-8 right-2 text-primary cursor-pointer" onClick={()=>setShowPassword(!showPassword)}>
+                    {showPassword ? <EyeOff /> : <Eye />}
+                </span>
             </div>
-            {state === "register" ? (
+            {form.state === "register" ? (
                 <p>
-                    Already have account? <span onClick={() => setState("login")} className="text-primary cursor-pointer">click here</span>
+                    Already have account? <span onClick={() => setForm({...form, state: "login"})} className="text-primary cursor-pointer">click here</span>
                 </p>
             ) : (
                 <p>
-                    Create an account? <span onClick={() => setState("register")} className="text-primary cursor-pointer">click here</span>
+                    Create an account? <span onClick={() => setForm({...form, state: "register"})} className="text-primary cursor-pointer">click here</span>
                 </p>
             )}
-            <button type='submit' disabled={loading} className="bg-primary hover:bg-primary-dull transition-all text-white w-full py-2 rounded-md cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center">
-                {loading ? (
+            <button type='submit' disabled={loginLoading} className="bg-primary hover:bg-primary-dull transition-all text-white w-full py-2 rounded-md cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center">
+                {loginLoading ? (
     <span className="flex items-center gap-1">
       Processing<span className="flex gap-0.5"><span className="animate-bounce">.</span><span className="animate-bounce delay-150">.</span><span className="animate-bounce delay-300">.</span></span>
     </span>
-  ) : state === "register" ? "Create Account" : "Login"}
+  ) : form.state === "register" ? "Create Account" : "Login"}
             </button>
         </form>
         </div>

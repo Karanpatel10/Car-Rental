@@ -21,7 +21,16 @@ const SLayoutDashbrd=()=>{
                                 {
                                     loading &&(
                                         <div className="absolute inset-0 bg-white flex items-center justify-center z-100">
-                                            <h1 className='text-bold text-3xl'>Loading...............</h1>
+                                            <h1 className='font-bold text-3xl'>
+                                                <span className='flex items-center gap-1'>
+                                                    Loading
+                                                     <span className="flex gap-2">
+                                                       <span className="animate-bounce">.</span>
+                                                       <span className="animate-bounce delay-300">.</span>
+                                                       <span className="animate-bounce delay-600">.</span>
+                                                    </span>
+                                                </span>
+                                            </h1>
                                         </div>   
                                     )
                                 }   

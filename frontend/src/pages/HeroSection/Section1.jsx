@@ -131,7 +131,7 @@ const Section1 = () => {
               onChange={(e) => setReturnDate(e.target.value)}
               onClick={(e)=>e.target.showPicker()}
               min={pickupDate || new Date().toISOString().split('T')[0]} // Ensure return date cannot be before pickup date
-              className="cursor-pointer bg-transparent outline-none text-white scheme-dark"
+              className="cursor-pointer bg-transparent outline-none text-white"
               required
             />
           </div>

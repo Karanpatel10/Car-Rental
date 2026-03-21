@@ -6,7 +6,7 @@ import toast from 'react-hot-toast'
 import ConformModel from '../../../components/ConformModel';
 
 export const AdUser = () =>{
-    const {currency,axios,setLoading,showconfirm,setShowConfirm}=useAppContext();
+    const {axios,setLoading,showconfirm,setShowConfirm}=useAppContext();
     const [manageUser,setManageUser]=useState([]);
     const [deleteUserId,setDeleteUserId]=useState(null);
 

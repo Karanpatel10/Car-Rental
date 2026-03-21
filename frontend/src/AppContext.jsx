@@ -111,12 +111,7 @@ export const AppProvider=({children})=>{
         navigate('/');
     }
 
-    // useEffect to retive from localstorage
-    // useEffect(()=>{
-        
-        
-        
-    // },[])
+    
 
     // useEffect to fetch when token avalibale
     useEffect(()=>{
@@ -126,7 +121,6 @@ export const AppProvider=({children})=>{
             setToken(token);
             axios.defaults.headers.common['Authorization']=`${token}`
             fetchUser();
-            // fetchBookings();
         }
         fetchCars();
     },[token])

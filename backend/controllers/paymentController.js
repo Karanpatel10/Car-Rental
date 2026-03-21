@@ -30,7 +30,6 @@ export  const createPaymentIntent=async(req,res)=>{
                 }
             })
         res.status(200).json({success:true,url:session.url})
-
     }catch(err){
         res.json({success:false,message:err.message})
     }
