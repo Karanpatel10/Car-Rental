@@ -3,11 +3,14 @@ import { useAppContext } from "../AppContext";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
 const MyBookings = () => {
     const{axios,user,setLoading}=useAppContext();
     const[mybooking,setMyBooking]=useState([]);
     const [paymentStatus,setPaymentStatus]=useState(null);
+    const location=useLocation();
+
 
     const fetchMyBooking=async()=>{
         try{
@@ -49,7 +52,7 @@ const MyBookings = () => {
         return()=>{
             window.removeEventListener('popstate',checkPaymentStatus);
         }        
-    },[location.serarch])
+    },[location.search])
 
     // autoclear payment status after 7 seconds and also when user click on ok button in popup modal
     useEffect(() => {
