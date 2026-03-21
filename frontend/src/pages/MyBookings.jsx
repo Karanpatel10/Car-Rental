@@ -49,7 +49,7 @@ const MyBookings = () => {
         return()=>{
             window.removeEventListener('popstate',checkPaymentStatus);
         }        
-    },[])
+    },[location.serarch])
 
     // autoclear payment status after 7 seconds and also when user click on ok button in popup modal
     useEffect(() => {
