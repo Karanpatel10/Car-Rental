@@ -32,7 +32,7 @@ const MyBookings = () => {
        const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('success') === 'true') {
                setPaymentStatus("success");
-            }else if(urlParams.get('success') === 'false'){
+            }else{
                 setPaymentStatus("failed");
             }             
     },[user])
@@ -42,7 +42,7 @@ const MyBookings = () => {
             const timer=setTimeout(()=>{
                 setPaymentStatus(null);
                 window.history.replaceState({}, document.title, "/my-bookings");
-            },3000);
+            },7000);
             return () => clearTimeout(timer);
         }
     },[paymentStatus])
