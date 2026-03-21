@@ -24,7 +24,7 @@ export  const createPaymentIntent=async(req,res)=>{
                 line_items:line_items,
                 mode:'payment',
                 success_url:`${frontend_url}/my-bookings?success=true`,
-                cancel_url:`${frontend_url}/?success=false`,
+                cancel_url:`${frontend_url}/my-bookings?success=false`,
                 payment_intent_data:{
                     metadata:metadata
                 }
