@@ -29,12 +29,21 @@ const MyBookings = () => {
         if(!user) return;
        fetchMyBooking(); 
 
-       const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('success') === 'true') {
-               setPaymentStatus("success");
-            }else{
-                setPaymentStatus("failed");
-            }             
+       const checkPaymentStatus=()=>{
+        const urlParams=new URLSearchParams(window.location.search);
+        if(urlParams.get('success')==='true'){
+            setPaymentStatus("success");
+        }else if(urlParams.get('success')==='false'){
+            setPaymentStatus("failure");
+        }
+    }
+        checkPaymentStatus();
+
+        window.addEventListener('popstate',checkPaymentStatus);
+
+        return()=>{
+            window.removeEventListener('popstate',checkPaymentStatus);
+        }        
     },[user])
 
     useEffect(() => {
