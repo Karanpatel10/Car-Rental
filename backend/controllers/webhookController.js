@@ -1,6 +1,7 @@
 import Stripe from 'stripe';
 import Cars from '../models/Cars.js';
 import Booking from '../models/Booking.js';
+import sendBookingEmail from '../configs/sendEmail.js';
 
 const stripe_credential = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -49,6 +50,8 @@ export const webhookHandler = async (req, res) => {
       });
 
       console.log('Booking created:', booking._id);
+
+      await sendBookingEmail(metadata.email, {...booking.toObject(),car:carData});
       return res.status(200).json({ received: true });
     } catch (err) {
       console.error('Error creating booking:', err);

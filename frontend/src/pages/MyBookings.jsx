@@ -9,8 +9,6 @@ const MyBookings = () => {
     const[mybooking,setMyBooking]=useState([]);
     const [paymentStatus,setPaymentStatus]=useState(null);
    
-
-
     const fetchMyBooking=async()=>{
         try{
             setLoading(true);
@@ -26,9 +24,7 @@ const MyBookings = () => {
             setLoading(false);
         }
     }
-
-
-    
+   
     useEffect(()=>{
         if(!user) return;
        fetchMyBooking(); 
@@ -36,15 +32,12 @@ const MyBookings = () => {
 
     // to check payment status after redirect from stripe payment page and also when user click on back button in browser after payment
     useEffect(()=>{
-       const checkPaymentStatus=()=>{
         const urlParams=new URLSearchParams(window.location.search);
         if(urlParams.get('success')==='true'){
             setPaymentStatus("success");
-        }else if(urlParams.get('success')==='false'){
+        }else{
             setPaymentStatus("failure");
         }
-    }
-        checkPaymentStatus();    
     },[])
 
     // autoclear payment status after 7 seconds and also when user click on ok button in popup modal
@@ -74,12 +67,9 @@ const MyBookings = () => {
                         </p>
 
                         <button className={`mt-5 px-4 py-2 rounded text-white ${paymentStatus === "success"? "bg-green-500": "bg-red-500"}`}
-                            onClick={() => {
-                                setPaymentStatus(null);
-
+                            onClick={() => {setPaymentStatus(null);
                                 // ✅ remove ?success from URL
-                                window.history.replaceState({},document.title,"/my-bookings");
-                            }}>
+                                window.history.replaceState({},document.title,"/my-bookings");}}>
                             OK
                         </button>
                     </motion.div>
