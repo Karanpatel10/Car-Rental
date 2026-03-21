@@ -25,15 +25,20 @@ const MyBookings = () => {
         }
     }
 
+
+    
     useEffect(()=>{
         if(!user) return;
        fetchMyBooking(); 
+    },[user])
 
+    // to check payment status after redirect from stripe payment page and also when user click on back button in browser after payment
+    useEffect(()=>{
        const checkPaymentStatus=()=>{
         const urlParams=new URLSearchParams(window.location.search);
         if(urlParams.get('success')==='true'){
             setPaymentStatus("success");
-        }else if(urlParams.get('success')==='false'){
+        }else{
             setPaymentStatus("failure");
         }
     }
@@ -44,8 +49,9 @@ const MyBookings = () => {
         return()=>{
             window.removeEventListener('popstate',checkPaymentStatus);
         }        
-    },[user])
+    },[])
 
+    // autoclear payment status after 7 seconds and also when user click on ok button in popup modal
     useEffect(() => {
         if(paymentStatus) {
             const timer=setTimeout(()=>{
