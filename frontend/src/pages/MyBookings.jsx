@@ -3,13 +3,12 @@ import { useAppContext } from "../AppContext";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { useLocation } from "react-router-dom";
 
 const MyBookings = () => {
     const{axios,user,setLoading}=useAppContext();
     const[mybooking,setMyBooking]=useState([]);
     const [paymentStatus,setPaymentStatus]=useState(null);
-    const location=useLocation();
+   
 
 
     const fetchMyBooking=async()=>{
@@ -45,14 +44,8 @@ const MyBookings = () => {
             setPaymentStatus("failure");
         }
     }
-        checkPaymentStatus();
-
-        window.addEventListener('popstate',checkPaymentStatus);
-
-        return()=>{
-            window.removeEventListener('popstate',checkPaymentStatus);
-        }        
-    },[location.search])
+        checkPaymentStatus();    
+    },[])
 
     // autoclear payment status after 7 seconds and also when user click on ok button in popup modal
     useEffect(() => {
@@ -80,10 +73,7 @@ const MyBookings = () => {
                             {paymentStatus === "success"? "Your booking has been confirmed.": "Your payment was cancelled or failed."}
                         </p>
 
-                        <button
-                            className={`mt-5 px-4 py-2 rounded text-white ${
-                                paymentStatus === "success"? "bg-green-500": "bg-red-500"
-                            }`}
+                        <button className={`mt-5 px-4 py-2 rounded text-white ${paymentStatus === "success"? "bg-green-500": "bg-red-500"}`}
                             onClick={() => {
                                 setPaymentStatus(null);
 
