@@ -1,7 +1,7 @@
 import Stripe from 'stripe';
 import Cars from '../models/Cars.js';
 import Booking from '../models/Booking.js';
-import sendBookingEmail from '../configs/sendEmail.js';
+import sendEmail from '../configs/sendEmail.js';
 
 const stripe_credential = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -49,11 +49,12 @@ export const webhookHandler = async (req, res) => {
         status: 'confirmed'
       });
 
-      console.log('Booking created:', booking._id);
+     
+      return res.status(200).json({ received: true });
+       console.log('Booking created:', booking._id);
       console.log('Sending booking confirmation email to:', metadata.email);
       console.log('Booking data:',booking)
-      await sendBookingEmail(metadata.email, {...booking.toObject(),car:carData});
-      return res.status(200).json({ received: true });
+      await sendEmail(metadata.email, {...booking.toObject(),car:carData});
     } catch (err) {
       console.error('Error creating booking:', err);
       return res.status(500).send('Internal Server Error');

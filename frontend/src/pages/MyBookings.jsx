@@ -35,7 +35,7 @@ const MyBookings = () => {
         const urlParams=new URLSearchParams(window.location.search);
         if(urlParams.get('success')==='true'){
             setPaymentStatus("success");
-        }else{
+        }else if(urlParams.get('success')==='false'){
             setPaymentStatus("failure");
         }
     },[])
