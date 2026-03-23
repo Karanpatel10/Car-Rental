@@ -5,7 +5,6 @@ import nodemailer from "nodemailer";
 const transporter = nodemailer.createTransport({
   host: "smtp-relay.brevo.com",
   port: 587,
-  secure: false, // Use true for port 465, false for port 587
   auth: {
     user: process.env.SENDER_USER,
     pass: process.env.SENDER_PASS,
@@ -16,7 +15,7 @@ const transporter = nodemailer.createTransport({
 const sendBookingEmail = async (userEmail, booking) => {
  try{
  const mailOptions = {
-      from:`Car Rental <${transporter.options.auth.user}>`,
+      from:process.env.SENDER_EMAIL,
       to: userEmail,
       subject: "Booking Confirmed 🎉",
       html: `
@@ -42,9 +41,9 @@ const sendBookingEmail = async (userEmail, booking) => {
     };
 
    const info=await transporter.sendMail(mailOptions);
-    console.log("✅ Email sent");
+    console.log("Email sent");
  }catch(error){
-  console.error("❌ Email error:", error.message);
+  console.error("Email error:", error.message);
  }
 }
 
