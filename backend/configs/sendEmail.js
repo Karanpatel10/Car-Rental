@@ -1,45 +1,51 @@
-import * as Brevo from "@getbrevo/brevo";
+import axios from "axios";
 
 const sendEmail = async (userEmail, booking) => {
   try {
-    console.log("Function sendEmail called with:", userEmail);
+    console.log("📧 Sending email to:", userEmail);
 
-    // 1️⃣ Initialize API client
-    const apiClient = new Brevo.ApiClient({
-      apiKey: process.env.BREVO_API_KEY,
-    });
+    const response = await axios.post(
+      "https://api.brevo.com/v3/smtp/email",
+      {
+        sender: {
+          email: process.env.SENDER_EMAIL,
+          name: "Car Rental",
+        },
+        to: [{ email: userEmail }],
+        subject: "Booking Confirmed 🎉",
 
-    // 2️⃣ Create TransactionalEmailsApi instance
-    const client = new Brevo.TransactionalEmailsApi(apiClient);
+        htmlContent: `
+          <div style="font-family: Arial; padding:20px;">
+            <h2>🚗 Booking Confirmed</h2>
+            <p>Your booking is successful.</p>
 
-    // 3️⃣ Prepare email data
-    const emailData = {
-      sender: { email: process.env.SENDER_EMAIL, name: "Car Rental" },
-      to: [{ email: userEmail }],
-      subject: "Booking Confirmed 🎉",
-      htmlContent: `
-        <div style="text-align:center; margin-bottom:20px;">
-          <img src="https://car-rental-cyan-delta.vercel.app/favicon.png" width="100"/>
-        </div>
-        <h2>Booking Successful 🎉</h2>
-        <p>Your booking is confirmed.</p>
-        <h3>Details:</h3>
-        <ul>
-          <li>Car: ${booking.car?.brand || ""} ${booking.car?.model || ""}</li>
-          <li>Pickup: ${new Date(booking.pickupDate).toLocaleDateString()}</li>
-          <li>Return: ${new Date(booking.returnDate).toLocaleDateString()}</li>
-          <li>Total: $${booking.price}</li>
-        </ul>
-        <p>Thank you 🚗</p>
-      `,
-    };
+            <h3>Details:</h3>
+            <ul>
+              <li><b>Car:</b> ${booking.car?.brand || ""} ${booking.car?.model || ""}</li>
+              <li><b>Pickup:</b> ${new Date(booking.pickupDate).toLocaleDateString()}</li>
+              <li><b>Return:</b> ${new Date(booking.returnDate).toLocaleDateString()}</li>
+              <li><b>Total:</b> $${booking.price}</li>
+            </ul>
 
-    // 4️⃣ Send email
-    await client.sendTransacEmail(emailData);
-    console.log("✅ Email sent successfully");
+            <p>Thank you for choosing us 🚗</p>
+          </div>
+        `,
+      },
+      {
+        headers: {
+          "api-key": process.env.BREVO_API_KEY,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    console.log("✅ Email sent successfully:", response.data);
 
   } catch (error) {
-    console.error("❌ Email error:", error.message);
+    console.error(
+      "❌ Email failed:",
+      error.response?.data || error.message
+    );
   }
 };
 
