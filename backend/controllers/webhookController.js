@@ -50,11 +50,12 @@ export const webhookHandler = async (req, res) => {
       });
 
      
-      return res.status(200).json({ received: true });
-       console.log('Booking created:', booking._id);
-      console.log('Sending booking confirmation email to:', metadata.email);
-      console.log('Booking data:',booking)
-      await sendEmail(metadata.email, {...booking.toObject(),car:carData});
+       res.status(200).json({ received: true });
+            setTimeout(() => {
+        sendEmail(metadata.email, {...booking.toObject(),car: carData.toObject()})
+        .then(() => console.log("Email sent"))
+        .catch((err) => console.error("Email error:", err));
+      }, 0);
     } catch (err) {
       console.error('Error creating booking:', err);
       return res.status(500).send('Internal Server Error');
