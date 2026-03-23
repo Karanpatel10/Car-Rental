@@ -1,4 +1,4 @@
-import {TransactionalEmailsApi} from "@getbrevo/brevo";
+import * as Brevo from "@getbrevo/brevo";
 
 const sendEmail = async (userEmail, booking) => {
   
@@ -8,12 +8,10 @@ const sendEmail = async (userEmail, booking) => {
 
       const apiInstance = new Brevo.TransactionalEmailsApi();
 
-      apiInstance.apiClient.authentications['api-key'].apiKey = process.env.BREVO_API_KEY;
-
-    // apiInstance.setApiKey(
-    //   Brevo.TransactionalEmailsApiApiKeys.apiKey,
-    //   process.env.BREVO_API_KEY
-    // );
+    apiInstance.setApiKey(
+      Brevo.TransactionalEmailsApiApiKeys.apiKey,
+      process.env.BREVO_API_KEY
+    );
 
     const emailData = {
       sender: {
