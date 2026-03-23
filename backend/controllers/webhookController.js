@@ -50,7 +50,8 @@ export const webhookHandler = async (req, res) => {
       });
 
       console.log('Booking created:', booking._id);
-
+      console.log('Sending booking confirmation email to:', metadata.email);
+      console.log('Booking data:',booking)
       await sendBookingEmail(metadata.email, {...booking.toObject(),car:carData});
       return res.status(200).json({ received: true });
     } catch (err) {

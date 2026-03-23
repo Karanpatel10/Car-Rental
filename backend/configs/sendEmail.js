@@ -13,6 +13,9 @@ const transporter = nodemailer.createTransport({
 
 // Send an email using async/await
 const sendBookingEmail = async (userEmail, booking) => {
+  console.log('Function sendBookingEmail called with');
+  console.log("Preparing to send email to:", userEmail);
+  console.log("Booking details for email:", booking);
  try{
  const mailOptions = {
       from:process.env.SENDER_EMAIL,
