@@ -46,7 +46,7 @@ const MyBookings = () => {
             const timer=setTimeout(()=>{
                 setPaymentStatus(null);
                 window.history.replaceState({}, document.title, "/my-bookings");
-            },7000);
+            },4000);
             return () => clearTimeout(timer);
         }
     },[paymentStatus])
