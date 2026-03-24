@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const sendEmail = async (userEmail, booking) => {
   try {
     console.log("📧 Sending email to:", userEmail);
@@ -5,8 +7,18 @@ const sendEmail = async (userEmail, booking) => {
     const frontend_url = process.env.FRONTEND_URL;
     const logo_url = `${frontend_url}/logo.png`; // Ensure your logo is the same as in your image
 
-    const htmlContent = `
-      <div style="font-family: Arial, sans-serif; max-width:600px; margin:0 auto; padding:0; background-color:#f5f7fa; border-radius:8px; overflow:hidden;">
+
+    const response = await axios.post(
+      "https://api.brevo.com/v3/smtp/email",
+      {
+        sender: {
+          email: process.env.SENDER_EMAIL,
+          name: "Car Rental",
+        },
+        to: [{ email: userEmail }],
+        subject: "Booking Confirmed 🎉",
+        htmlContent: `
+           <div style="font-family: Arial, sans-serif; max-width:600px; margin:0 auto; padding:0; background-color:#f5f7fa; border-radius:8px; overflow:hidden;">
 
         <!-- Header with Banner Image -->
         <div style="background-color:#0c1f3c; text-align:center; padding:20px;">
@@ -61,15 +73,7 @@ const sendEmail = async (userEmail, booking) => {
           Need help? <a href="mailto:support@saferide.com" style="color:#0c1f3c;">Contact Support</a>
         </p>
       </div>
-    `;
-
-    const response = await axios.post(
-      "https://api.brevo.com/v3/smtp/email",
-      {
-        sender: { email: process.env.SENDER_EMAIL, name: "SafeRide" },
-        to: [{ email: userEmail }],
-        subject: "Booking Confirmed 🎉",
-        htmlContent,
+        `,
       },
       {
         headers: {
@@ -79,9 +83,10 @@ const sendEmail = async (userEmail, booking) => {
       }
     );
 
-    console.log("✅ Email sent successfully:", response.data);
+    console.log("✅ Email sent:", response.data);
+
   } catch (error) {
-    console.error("❌ Email failed:", error.response?.data || error.message);
+    console.error("❌ Email error:", error.response?.data || error.message);
   }
 };
 
