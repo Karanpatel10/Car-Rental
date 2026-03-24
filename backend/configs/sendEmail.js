@@ -13,7 +13,7 @@ const sendEmail = async (userEmail, booking) => {
       {
         sender: {
           email: process.env.SENDER_EMAIL,
-          name: "Car Rental",
+          name: "SafeRide",
         },
         to: [{ email: userEmail }],
         subject: "Booking Confirmed 🎉",
@@ -22,15 +22,14 @@ const sendEmail = async (userEmail, booking) => {
 
         <!-- Header with Banner Image -->
         <div style="background-color:#0c1f3c; text-align:center; padding:20px;">
-          <img src="${logo_url}" alt="SafeRide Logo" style="width:150px; height:auto; margin-bottom:10px;"/>
-          <h1 style="color:#fff; font-size:28px; margin:0;">SafeRide</h1>
+          <img src="${logo_url}" alt="SafeRide Logo" style="width:400px; height:auto; margin-bottom:10px;"/>
           <p style="color:#f0f0f0; font-size:14px; margin:5px 0;">Rent a Car</p>
         </div>
 
         <!-- Confirmation Message -->
         <div style="text-align:center; padding:30px 20px;">
           <h2 style="color:#0c1f3c; font-size:24px; margin-bottom:10px;">✅ Booking Confirmed! 🎉</h2>
-          <p style="color:#555; font-size:16px; margin:0;">Your car is ready for your trip. 🚗</p>
+          <p style="color:#555; font-size:16px; margin:0;">Your car is ready for your trip.</p>
         </div>
 
         <!-- Booking Details -->
@@ -55,7 +54,7 @@ const sendEmail = async (userEmail, booking) => {
             </tr>
             <tr>
               <td style="padding:8px; font-weight:bold;">Booking ID:</td>
-              <td style="padding:8px;">${booking?.id ?? "N/A"}</td>
+              <td style="padding:8px;">${booking?._id ?? "N/A"}</td>
             </tr>
           </table>
 
