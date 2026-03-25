@@ -92,7 +92,10 @@ const MyBookings = () => {
                                         <p>{booking.car.category}&nbsp;{booking.car.year}</p>
                                     </div>
                                     <div className="flex flex-col gap-3">
-                                        <p>Booking#{index+1}<span className={`ml-3 p-2 rounded-lg ${booking.status === 'confirmed' ? 'text-green-500 bg-green-100' : 'text-red-500 bg-red-100'}`}>{booking.status}</span></p>
+                                        <p>Booking#{index+1}
+                                            <span className={`ml-3 p-2 rounded-lg ${booking.payment === 'unpaid' ? 'text-red-500 bg-red-100' : 'text-green-500 bg-green-100'}`}>{booking.payment === 'unpaid' ?'unpaid': 'paid'}</span>
+                                            <span className={`ml-3 p-2 rounded-lg ${booking.status === 'confirmed' ? 'text-green-500 bg-green-100' : 'text-red-500 bg-red-100'}`}>{booking.status}</span>
+                                        </p>
                                         <label className='font-medium flex gap-3 text-gray-400'><Calendar className="text-primary"/>Rental Period</label>
                                         <p className="ml-10">{new Date(booking.pickupDate).toLocaleDateString("en-US")}&nbsp;-&nbsp;{new Date(booking.returnDate).toLocaleDateString('en-US')}</p>
 

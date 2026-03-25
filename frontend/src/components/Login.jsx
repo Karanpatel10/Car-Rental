@@ -50,7 +50,7 @@ const Login=()=>{
             <div className="w-full relative">
                 <p>Password</p>
                 <input onChange={(e) => setForm({...form, password: e.target.value})} value={form.password} placeholder="type here" className="border border-gray-200 rounded w-full p-2 mt-1 outline-primary" type={showPassword ? "text" : "password"} required />
-                <span className="absolute top-8 right-2 text-primary cursor-pointer" onClick={()=>setShowPassword(!showPassword)}>
+                <span className={`absolute top-8 right-2 ${showPassword ? 'text-primary' : 'text-gray-400'} cursor-pointer`} onClick={()=>setShowPassword(!showPassword)}>
                     {showPassword ? <EyeOff /> : <Eye />}
                 </span>
             </div>

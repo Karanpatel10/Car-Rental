@@ -1,39 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import {useParams } from 'react-router-dom';
+import {NavLink, useParams } from 'react-router-dom';
 import { assets} from '../assets/assets';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Link } from 'lucide-react';
 import Loading from '../components/Loading';
 import { useAppContext } from '../AppContext';
-import toast from 'react-hot-toast';
+
 
 const CarDetails = () => {
 
-  const {navigate,setShowLogin,user,cars,carDetails,setCarDetails,axios,pickupCity,setPickupCity,pickupDate,returnDate,setPickupDate,setReturnDate,hassearch}=useAppContext();
+  const {navigate,setShowLogin,user,cars,carDetails,setCarDetails,hassearch}=useAppContext();
 
   const {id}=useParams();
  
   const [mainImage, setMainImage] = useState(0);
-//   const [checking,setChecking]=useState(false)
-
-
-//  const handleCheckAvalibility=async(e)=>{
-//   e.preventDefault();
-//   try{
-//     setChecking(true)
-//     const {data}=await axios.post('/api/booking/check-avaliblity',{car:id,pickupCity,pickupDate,returnDate})
-//     if(data.success){
-//       console.log(data);
-//       toast.success(data.message)
-//     }else{
-//       toast.error(data.message)
-//     }
-//   }catch(err){
-//     toast.error(err.message)
-//   }finally{
-//     setChecking(false)
-//   }
-//  }
-
 
   useEffect(()=>{
     setCarDetails(cars.find(car=>car._id === id))
@@ -101,9 +80,10 @@ const CarDetails = () => {
               </ul>
             </div>
 
-
-                 {hassearch && <button type='submit'  className='cursor-pointer w-full lg:max-w-1/6 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 active:scale-95 transition-transform duration-200' onClick={()=>{!user?setShowLogin(true):navigate(`/book-details/${id}`)}}>Book Now</button>}
-
+              <div className='flex items-center gap-10'>
+                  <button type='submit' disabled={!hassearch}  className={`cursor-pointer w-full lg:max-w-1/6  py-3 rounded-lg text-white  active:scale-95 transition-transform duration-200 ${hassearch?'bg-blue-600  hover:bg-blue-700':'bg-gray-400 cursor-not-allowed'}`} onClick={()=>{!user?setShowLogin(true):navigate(`/book-details/${id}`)}}>Book Now</button>
+                  {!hassearch && (<NavLink to='/#sec1_search' className='text-red-500 cursor-pointer hover:underline'>Check availability to book now</NavLink>)}
+              </div>
         </div>
       </div>
     </div>

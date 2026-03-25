@@ -44,7 +44,7 @@ const Section1 = () => {
   }
 
   return (
-    <section className="relative md:h-screen w-full flex flex-col overflow-hidden">
+    <section className="relative md:h-screen w-full flex flex-col overflow-hidden" id="sec1_search">
 
       {/* Background video */}
       <motion.video src={mainvideo} autoPlay muted loop playsInline preload="auto" className="order-2 md:absolute inset-0 w-full h-full object-contain md:object-cover z-0 bg-black"/>

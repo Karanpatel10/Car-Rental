@@ -9,7 +9,7 @@ const Footer=()=>{
 
     const dataList=[
                 {title:'QUICK LINKS',links:[{name:'Home',href:'/'},{name:'Browse Cars',href:'/cars'},{name:'List Your Car',href:'#'},{name:'About Us',href:'/About'}]},
-                {title:'RESOURCES',links:[{name:'FAQ',href:'/FAQ'},{name:'Terms of Service',href:'/terms-of-service'},{name:'Privacy Policy',href:'/privacy-policy'},{name:'Insurance',href:'#'}]},
+                {title:'RESOURCES',links:[{name:'FAQ',href:'/FAQ'},{name:'Terms of Service',href:'/terms-of-service'},{name:'Privacy Policy',href:'/privacy-policy'},{name:'Insurance',href:'https://www.google.com/search?q=insurance'}]},
                 {title:'Contact',links:[{name:'478 Eastchester DR',href:'https://www.google.com/maps?q=478+Eastchester+Dr+Greensboro+NC+27405'},{name:'Greensboro NC USA',href:'https://www.google.com/maps?q=478+Eastchester+Dr+Greensboro+NC+27405',external:true},{name:'+1336-666-1454',href:'tel:+13366661454'},{name:'info@carerental.com',href:'mailto:info@carerental.com'}]}
         ]
 

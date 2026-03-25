@@ -80,10 +80,10 @@ const BookDetails = () => {
             </div>
          
            
-          <form className='grid grid-cols-1 lg:grid-cols-5 gap-15 w-full py-15' >
+          <form className='grid grid-cols-1 lg:grid-cols-5 gap-15 w-full py-15' onSubmit={(e)=>{e.preventDefault(); handlebookingAndPayment();}}>
            
             {/* First part */}
-                <div className='flex flex-col shadow-2xl bg-gray-100 p-10 rounded-lg gap-4 w-full lg:col-span-3'>
+                <div className='flex flex-col shadow-md bg-gray-200 p-10 rounded-lg gap-4 w-full lg:col-span-3'>
                     <div>
                         <h1 className='font-bold text-xl'>Summary</h1>
                         <p>Booking Details</p>
@@ -91,7 +91,7 @@ const BookDetails = () => {
                     <div className='font-extrabold text-2xl flex justify-between'><span>{carDetails.brand}</span><span className='font-light text-end'>{carDetails.pricePerDay}$/Day</span></div>  
 
                     {/* order details */}
-                    <div className='grid md:grid-cols-2 shadow-2xl bg-gray-300 rounded-2xl p-10 my-10 gap-14'>
+                    <div className='grid md:grid-cols-2 shadow-2xl bg-white rounded-2xl p-10 my-10 gap-14'>
                         <img src={carDetails.image[0]} alt='car-image'/>
                         <div className='flex flex-col gap-3'>
                             <p className='border-b-2 border-gray-400'>{carDetails.brand}</p>
@@ -109,22 +109,22 @@ const BookDetails = () => {
                     <div className='flex flex-col md:flex-row gap-5'>
                         <div className='flex flex-col flex-1 gap-1'>
                             <label>Full Name</label>
-                            <input type="text" className='w-full border p-2 rounded-lg' required value={Data.fullname} onChange={(e)=>setData({...Data,fullname:e.target.value})} placeholder='Full Name'/>
+                            <input type="text" className='w-full  p-2 bg-white rounded-lg' required value={Data.fullname} onChange={(e)=>setData({...Data,fullname:e.target.value})} placeholder='Full Name'/>
                         </div>   
                         <div className='flex flex-col flex-1 gap-1'>
                             <label>Email</label>
-                            <input type="email" className='w-full border p-2 rounded-lg ' required value={Data.email} onChange={(e)=>setData({...Data,email:e.target.value})} placeholder='Email'/>
+                            <input type="email" className='w-full  p-2 bg-white rounded-lg ' required value={Data.email} onChange={(e)=>setData({...Data,email:e.target.value})} placeholder='Email'/>
                         </div> 
                     </div>
                     <div className='flex flex-col gap-1'>  
                         <label>Phone Number</label>
-                        <input type="tel" className='w-full border p-2 rounded-lg' required value={Data.phoneno} onChange={(e)=>setData({...Data,phoneno:e.target.value})} placeholder='Phone Number'/>
+                        <input type="tel" className='w-full  p-2 bg-white rounded-lg' required value={Data.phoneno} onChange={(e)=>setData({...Data,phoneno:e.target.value})} placeholder='Phone Number'/>
                     </div>
                     <div className='flex flex-col gap-1'>
                         <label>Address</label>
-                        <input type="text" className='w-full border p-2 rounded-lg' required value={Data.address} onChange={(e)=>setData({...Data,address:e.target.value})} placeholder='Pickup Address' />
+                        <input type="text" className='w-full p-2 bg-white rounded-lg' required value={Data.address} onChange={(e)=>setData({...Data,address:e.target.value})} placeholder='Pickup Address' />
                     </div>
-                    <textarea className='w-full border p-2 rounded-lg' required value={Data.specialInstruction} onChange={(e)=>setData({...Data,specialInstruction:e.target.value})} placeholder='Please mention any special Instruction' />
+                    <textarea className='w-full p-2 bg-white rounded-lg' required value={Data.specialInstruction} onChange={(e)=>setData({...Data,specialInstruction:e.target.value})} placeholder='Please mention any special Instruction' />
                     
                     <div>
                         <ul className='list-disc ml-6'>
@@ -137,9 +137,9 @@ const BookDetails = () => {
 
            
                 {/* second part  */}
-                <div className='flex flex-col shadow-2xl bg-gray-100 p-10 rounded-lg gap-4 w-full lg:col-span-2'>
+                <div className='flex flex-col shadow-md bg-gray-200 p-10 rounded-lg gap-4 w-full lg:col-span-2'>
 
-                        <div className='bg-gray-300 leading-loose p-5 rounded-lg'>
+                        <div className='bg-white leading-loose p-5 rounded-lg'>
                             {
                             BookData.second_part.map((data,index)=>(
                                 <div key={index} className='flex flex-col'>
@@ -159,7 +159,7 @@ const BookDetails = () => {
                             </ul>    
                         </div>   
                         <p className='flex items-center gap-2'><input type='checkbox' required/>I agree to the <span className='text-red-500'>Terms & Conditions</span></p>  
-                    <button type='button' onClick={handlebookingAndPayment} disabled={loading} className='cursor-pointer mt-5 w-full lg:max-w-1/2 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 active:scale-95 transition-transform duration-200 disabled:cursor-not-allowed disabled:bg-gray-500'>{loading?'Confitm Booking .... ': 'Confirm Booking'}</button>
+                    <button type='submit' disabled={loading} className='cursor-pointer mt-5 w-full lg:max-w-1/2 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 active:scale-95 transition-transform duration-200 disabled:cursor-not-allowed disabled:bg-gray-500'>{loading?'Confitm Booking .... ': 'Confirm Booking'}</button>
                 </div>
 
             </form> 
