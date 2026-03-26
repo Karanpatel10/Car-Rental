@@ -10,7 +10,7 @@ const Footer=()=>{
     const dataList=[
                 {title:'QUICK LINKS',links:[{name:'Home',href:'/'},{name:'Browse Cars',href:'/cars'},{name:'List Your Car',href:'#'},{name:'About Us',href:'/About'}]},
                 {title:'RESOURCES',links:[{name:'FAQ',href:'/FAQ'},{name:'Terms of Service',href:'/terms-of-service'},{name:'Privacy Policy',href:'/privacy-policy'},{name:'Insurance',href:'https://www.google.com/search?q=insurance'}]},
-                {title:'Contact',links:[{name:'478 Eastchester DR',href:'https://www.google.com/maps?q=478+Eastchester+Dr+Greensboro+NC+27405'},{name:'Greensboro NC USA',href:'https://www.google.com/maps?q=478+Eastchester+Dr+Greensboro+NC+27405',external:true},{name:'+1336-666-1454',href:'tel:+13366661454'},{name:'info@carerental.com',href:'mailto:info@carerental.com'}]}
+                {title:'CONTACT',links:[{name:'478 Eastchester DR',href:'https://www.google.com/maps?q=478+Eastchester+Dr+Greensboro+NC+27405'},{name:'Greensboro NC USA',href:'https://www.google.com/maps?q=478+Eastchester+Dr+Greensboro+NC+27405',external:true},{name:'+1336-666-1454',href:'tel:+13366661454'},{name:'info@carerental.com',href:'mailto:info@carerental.com'}]}
         ]
 
     return( 
@@ -37,9 +37,9 @@ const Footer=()=>{
                 </div>
 
                {dataList.map((data,index)=> 
-                    <div initial={{opacity:0}} whileInView={{opacity:1}} transition={{duration:0.5,delay:0.5}} key={index}>
+                    <div initial={{opacity:0}} whileInView={{opacity:1}} transition={{duration:0.5,delay:0.5}} key={index} className="py-7 md:py-0">
                             <p className='text-lg text-[#ADADAD]'>{data.title}</p>
-                            <ul className='mt-3 flex flex-col gap-2 text-sm'>
+                            <ul className='mt-3 flex flex-col gap-1 text-sm'>
                                 {
                                     data.links.map((link,idx)=>
                                     <li key={idx} className="hover:text-white transition-all"><a href={link.href}>{link.name}</a></li>

@@ -44,7 +44,7 @@ const Section4 = () => {
         >
           {testimonials.map((testimonial) => (
             <SwiperSlide key={testimonial.id}>
-              <div className="bg-white text-black m-10 p-6 rounded-3xl shadow-md hover:scale-105 min-h-[250px] hover:shadow-xl transition-transform  duration-300  gap-5 flex flex-col justify-between"
+              <div className="bg-white text-black m-5 md:m-10 p-4 md:p-6 rounded-3xl shadow-md hover:scale-105 hover:shadow-xl transition-transform h-[250px] duration-300  gap-5 flex flex-col justify-between"
               >
                 {/* Card Header */}
                 <div className="flex items-center gap-3">

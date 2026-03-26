@@ -5,7 +5,7 @@ const sendEmail = async (userEmail, booking) => {
     console.log("📧 Sending email to:", userEmail);
 
     const frontend_url = process.env.FRONTEND_URL;
-    const logo_url = `${frontend_url}/logo.png`; // Ensure your logo is the same as in your image
+    // Ensure your logo is the same as in your image
 
 
     const response = await axios.post(
@@ -22,7 +22,8 @@ const sendEmail = async (userEmail, booking) => {
 
         <!-- Header with Banner Image -->
         <div style="background-color:#0c1f3c; text-align:center; padding:20px;">
-          <img src="${logo_url}" alt="SafeRide Logo" style="width:400px; height:auto; margin-bottom:10px;"/>
+          <img src="${frontend_url}/logo.png" alt="SafeRide Logo" style="width:350px; height:auto; margin-bottom:10px;"/>
+          <img src="${frontend_url}/badge_check.png" alt="Payment Verified" style="width:80px; height:auto; display:block; margin:0 auto; box-shadow: 0 0 8px 2px #28a745; border-radius: 50%;" />
           <p style="color:#f0f0f0; font-size:14px; margin:5px 0;">Rent a Car</p>
         </div>
 
