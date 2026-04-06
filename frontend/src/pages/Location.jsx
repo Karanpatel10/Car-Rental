@@ -5,7 +5,10 @@ import { cityList } from "../assets/assets";
 import { Link } from "react-router-dom";
 
 
+
 export default function Locations() {
+
+
   const [mapUrl, setMapUrl] = useState(
     "https://www.google.com/maps?q=North+Carolina&t=m&z=6&output=embed"
   );
@@ -35,9 +38,9 @@ export default function Locations() {
             <div
               key={index}
               onClick={() => showCity(city)}
-              className="flex gap-4 cursor-pointer rounded-lg p-4 mb-3 hover:bg-blue-200 transition"
+              className="group flex gap-4 cursor-pointer rounded-lg p-4 mb-3 hover:bg-primary hover:text-white transition duration-100 ease-in"
             >
-              <MapPinCheckInside className="text-primary"/>{city}
+              <MapPinCheckInside className="text-primary group-hover:text-white"/>{city}
             </div>
           ))}
         </div>
@@ -55,11 +58,17 @@ export default function Locations() {
 
       </div>
 
-      {/* Footer Note */}
+      
+{/* Footer Note */}
       <div className="mt-8 text-gray-600">
         Not in your area yet?  <span className="text-blue-600 font-medium cursor-pointer"> {" "}<Link to="/contact-us">Contact us</Link></span>{" "}— we’re expanding soon.
       </div>
 
+        
+      
+
     </div>
+
+    
   );
 }

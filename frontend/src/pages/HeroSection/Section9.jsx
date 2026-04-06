@@ -16,11 +16,11 @@ const datainfo=[
 
 const Section9 = () => {
   return (
-    <div className="px-6 md:px-16 lg:px-45 gap-6 md:gap-15 flex flex-col py-10">
+    <div className="px-6 md:px-15 lg:px-35 gap-10  flex flex-col pt-35">
       <Title title='Why CarRental?'/>
      <Swiper
   slidesPerView={2}
-  spaceBetween={150}
+  spaceBetween={100}
   freeMode={false}
   autoplay={{
     delay: 2000,
@@ -38,8 +38,8 @@ const Section9 = () => {
   {
     datainfo.map((item,index)=>(
       <SwiperSlide className='w-full h-full rounded-2xl relative' key={index}><img src={item.image} alt='banner1' className='w-full object-cover h-full rounded-2xl'/>
-      <div className="absolute inset-0 bg-black/50  rounded-2xl flex flex-col justify-end p-5">
-        <h2 className="text-white text-xl md:text-2xl font-semibold mb-2">{item.title}</h2>
+      <div className="absolute inset-0 bg-black/10  rounded-2xl flex flex-col justify-end  p-5">
+        <h2 className="text-white text-xl md:text-2xl font-semibold mb-2 ">{item.title}</h2>
         <p className="text-white text-sm md:text-base leading-relaxed">{item.subtitle}</p>
       </div>
       </SwiperSlide>

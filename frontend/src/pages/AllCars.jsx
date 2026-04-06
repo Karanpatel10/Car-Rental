@@ -8,7 +8,7 @@ import { motion } from "motion/react";
  
 
 const Allcars = () => {
-    const {cars,setCars,navigate,filterCar,hassearch} = useAppContext();
+    const {cars,navigate,filterCar,hassearch} = useAppContext();
     const [searchItem,setSearchItem]=useState("");
     let listtoshow=cars;
 
@@ -37,7 +37,7 @@ const Allcars = () => {
         </div>
 
         {/* All Cars show */}
-        <motion.div initial={{ opacity: 0,scale: 0.8,y: 20 }} animate={{ opacity: 1, scale: 1,y: 0 }} transition={{duration:0.5,ease:'easeOut'}} viewport={{once:true}} className="flex flex-row gap-20 flex-wrap justify-center px-6 md:px-16 lg:px-24 xl:px-32 pb-15">
+        <motion.div initial={{ opacity: 0,scale: 0.8,y: 20 }} animate={{ opacity: 1, scale: 1,y: 0 }} transition={{duration:0.5,ease:'easeOut'}} viewport={{once:true}} className="flex flex-row gap-15 flex-wrap justify-center px-6 md:px-8 lg:px-24 xl:px-30 pb-15">
             {
             finalCars.map((car) => (
                 <div key={car._id} onClick={() => navigate(`/car-details/${car._id}`)}>

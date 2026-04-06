@@ -21,7 +21,7 @@ const CarDetails = () => {
   return carDetails ? (
     <div className='px-6 md:px-16 lg:px-24 xl:px-32'>
       <div className='flex'>
-        <button onClick={() =>navigate(-1) } className='m-5 p-2 rounded-md flex items-center gap-2 cursor-pointer hover:scale-105 transition-transform duration-200'>
+        <button onClick={() =>navigate(-1) } className='m-5 p-2 rounded-md flex items-center gap-2 cursor-pointer hover:scale-120 transition-transform duration-200'>
           <ArrowLeft size={16}/> Back
         </button>
       </div>
@@ -33,7 +33,7 @@ const CarDetails = () => {
           <div className='hidden lg:grid lg:grid-cols-2 gap-5'>
             {
               [...Array(4)].map((_, index) => (
-                <img key={index} src={carDetails.image[index]} alt={`image${index + 1}`} onClick={() => setMainImage(index)}  className={`cursor-pointer object-cover rounded-xl w-full h-full overflow-hidden p-0.5 ${mainImage === index ? 'border-4 border-blue-500' : ''}`}/>
+                <img key={index} src={carDetails.image[index]} alt={`image${index + 1}`} onClick={() => setMainImage(index)}  className={`cursor-pointer object-cover hover:scale-105 transition duration-200 rounded-xl w-full h-full overflow-hidden p-3 ${mainImage === index ? 'border-2 border-blue-600' : ''}`}/>
               ))
             }
               
@@ -41,6 +41,7 @@ const CarDetails = () => {
         </div>
 
         <div className='my-5 '>
+         
           <h1 className='font-bold text-2xl'>{carDetails.brand} {carDetails.model}</h1>
           <p className='pb-5'>{carDetails.category} {carDetails.year}</p>
           <hr className='text-gray-300/90 mb-2'/>
@@ -52,7 +53,7 @@ const CarDetails = () => {
               {icon:assets.car_icon,text:carDetails.transmission},
               {icon:assets.location_icon,text:carDetails.location},
             ].map((icon,text)=>(
-              <div key={text} className='flex flex-col items-center gap-2 mt-3 bg-light max-w-x p-4 rounded-lg'>
+              <div key={text} className='flex flex-col items-center gap-2 mt-3 bg-gray-200 max-w-xs p-4 rounded-lg'>
                 <img src={icon.icon} alt="icon" className='w-5 h-5'/>
                 <p>{icon.text}</p>
               </div>
@@ -64,7 +65,7 @@ const CarDetails = () => {
 
             <div>
               <h1 className='text-xl font-medium my-5'>Desription</h1>
-              <p className='text-gray-500'>{carDetails.description}</p>
+              <p className='text-gray-700'>{carDetails.description}</p>
             </div>
 
             {/* Features */}
@@ -74,14 +75,14 @@ const CarDetails = () => {
               <ul className='grid grid-col-1 sm:grid-cols-2 gap-2'>
                 {
                   ["360 Camera","Bluetooth","Backup Sensor","Cruise Control","Heated Seats","Keyless Entry","Leather Seats","Navigation System","Remote Start","Sunroof"].map((feature,index)=>(
-                    <li key={index} className='text-gray-500 flex items-center ml-5 mb-1'><img src={assets.check_icon} alt="check icon" className='inline w-4 h-4 mr-2'/>{feature}</li>
+                    <li key={index} className='text-gray-700 flex items-center ml-5 mb-1'><img src={assets.check_icon} alt="check icon" className='inline w-4 h-4 mr-2'/>{feature}</li>
                   ))
                 }
               </ul>
             </div>
 
               <div className='flex flex-row flex-wrap items-center gap-10'>
-                  <button type='submit' disabled={!hassearch}  className={`cursor-pointer order-2 md:order-1 w-full lg:max-w-1/6  py-3 rounded-lg text-white  active:scale-95 transition-transform duration-200 ${hassearch?'bg-blue-600  hover:bg-blue-700':'bg-gray-400 hover:cursor-not-allowed'}`} onClick={()=>{!user?setShowLogin(true):navigate(`/book-details/${id}`)}}>Book Now</button>
+                  <button type='submit' disabled={!hassearch}  className={`cursor-pointer order-2 md:order-1 w-full lg:max-w-1/6  py-3 rounded-lg text-white  active:scale-95 transition-transform duration-200 ${hassearch?'bg-blue-600  hover:bg-blue-700':'bg-gray-500 hover:cursor-not-allowed'}`} onClick={()=>{!user?setShowLogin(true):navigate(`/book-details/${id}`)}}>Book Now</button>
                   {!hassearch && (<NavLink to='/#sec1_search' className='text-red-500 order-1 md:order-2 cursor-pointer hover:underline'>Check availability to book</NavLink>)}
               </div>
         </div>

@@ -6,6 +6,7 @@ import mainvideo from '../../assets/main_carv.mp4'
 import toast from 'react-hot-toast'
 import { useAppContext } from '../../AppContext'
 import { TypeAnimation } from 'react-type-animation';
+import TextType from '../../Animate/TextType';
 
 const Section1 = () => {
 
@@ -50,14 +51,27 @@ const Section1 = () => {
       <motion.video src={mainvideo} autoPlay muted loop playsInline preload="auto" className="order-2 md:absolute inset-0 w-full h-full object-contain md:object-cover z-0 bg-black"/>
 
       {/* Overlay */}
-       <div className="absolute inset-0 md:bg-black/40 z-10"/>
+       <div className="absolute inset-0 md:bg-black/10 z-10"/>
 
       {/* Content */}
-      <div className="order-1 relative z-20 flex flex-col items-center justify-center h-full text-center bg-black md:bg-transparent gap-5 text-white p-10">
+      <div className="order-1 relative z-20 flex flex-col items-center justify-center h-full text-center bg-black md:bg-transparent gap-5 text-white">
 
-        <div className='flex item-center justify-center min-h-20 md:min-h-8'>
-         <TypeAnimation sequence={['Experience Automotive Excellence ... ', 2000,'Where Luxury Meets Performance ... ',2000,'Driven by Elegance ... ',2000,'The Pinnacle of Automotive Luxury ... ',2000]} speed={40} wrapper="span" cursor={false}  repeat={Infinity} className="max-w-full text-3xl md:text-5xl font-semibold"/> 
-        </div>
+        <div className="flex items-center justify-center min-h-[90px] md:min-h-[120px] text-center px-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+  <TextType
+    className="text-3xl md:text-5xl font-semibold leading-tight"
+    text={[
+      "Experience Automotive Excellence",
+      "Where Luxury Meets Performance",
+      "Driven by Elegance",
+      "The Pinnacle of Automotive Luxury"
+    ]}
+    typingSpeed={75}
+    pauseDuration={1500}
+    showCursor
+    cursorCharacter="_"
+    deletingSpeed={50}
+  />
+</div>
           
         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="max-w-2xl text-lg text-white/90">
           Premium vehicles • Affordable pricing • Easy booking

@@ -116,7 +116,7 @@ const FAQ=()=>{
                 }
             `}</style>
             <div className=" max-w-full md:max-w-2/3 mx-auto flex flex-col items-center justify-center py-25 px-5 md:p-25">
-                <p className="text-indigo-600 text-sm font-medium">FAQ's</p>
+                <p className="text-primary text-sm font-medium">FAQ's</p>
                 <h1 className="text-3xl font-semibold text-center">Looking for answer?</h1>
                 <p className="text-sm text-slate-500 mt-2 pb-8 text-center">
 			    		Some of the frequently asked questions our customers often ask about our rental procedures.			    	

@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from 'react'
 import {assets, menuLinks} from '../assets/assets'
 import { NavLink,Link} from 'react-router-dom'
@@ -5,8 +6,10 @@ import {CircleUserRound, LogOut, Search, TextAlignCenter, TextAlignJustify, X, N
 import { useAppContext } from '../AppContext.jsx'
 import toast from 'react-hot-toast'
 import { Menu } from '@headlessui/react';
-import {motion} from 'motion/react'
+// import {motion} from 'motion/react'
+import {motion} from 'framer-motion';
 import ConformModel from './ConformModel.jsx'
+import { GooeyInput } from '../components/ui/gooey-input.tsx'
 
 const Navbar = () => {
   
@@ -32,7 +35,7 @@ const Navbar = () => {
 
   return (
     <motion.div initial={{y:-1,opacity:0}} animate={{y:0,opacity:1}} transition={{duration:0.1}}
-     className={`flex items-center justify-between px-6 md:px-16 lg:px-10  text-gray-600  border-b border-borderColor relative transition-all ${location.pathname === '/' && 'bg-black border-b-0'}`}>
+     className={`flex items-center justify-between px-6 md:px-16 lg:px-10  text-gray-600  border-b border-borderColor relative transition-all ${location.pathname === '/' && 'bg-black/96 text-white border-b-0'}`}>
     
     
       
@@ -46,17 +49,23 @@ const Navbar = () => {
      {/* Menu Links */}
       
       <div className='flex flex-row  items-center gap-3'>
-            <div className={`max-md:fixed  max-md:h-screen max-md:w-full max-md:top-16 max-md:border-t flex flex-col right-0 md:flex-row gap-4 md:gap-8 max-md:p-4 items-start md:items-center border-borderColor transition-all duration-300 z-50 ${location.pathname==="/"?'bg-black text-white':'bg-white text-black'} ${open ?'max-md:translate-x-0':'max-md:translate-x-full'}`}>
+            <div className={`max-md:fixed  max-md:h-screen max-md:w-full max-md:top-16 max-md:border-t flex flex-col right-0 md:flex-row gap-4 md:gap-8 max-md:p-4 items-start md:items-center border-borderColor transition-all duration-300 z-50 ${open ?'max-md:translate-x-0':'max-md:translate-x-full'}`}>
                 {menuLinks.map((link,index)=>(
                   <NavLink key={index} to={link.path} onClick={()=>{setFilterCar([]);setHassearch(false);if(window.innerWidth<640){setOpen(false)}}} className={({isActive})=>isActive?'text-primary font-bold':'border-b-2 border-transparent  hover:text-primary font-semibold'}>
                   {link.name}
                   </NavLink>
                 ))}
 
-                {/*SearchBar */}
-                <div className='xl:flex py-1.5 border border-borderColor px-1 gap-2 rounded-full max-w-56 hidden items-center'>
-                  <input type="text" className='w-full placeholder-gray-500 outline-none bg-white rounded-full px-3' placeholder='Search Product'/><Search/> 
-                </div>
+                
+                  
+
+
+                    {/* <div className="flex h-6 w-full items-center justify-center"> */}
+                      <GooeyInput placeholder="Search..."/>
+                    {/* </div> */}
+  
+
+                {/* </div> */}
 
                 <div className='flex flex-col gap-4 md:flex-row'>
                   {
