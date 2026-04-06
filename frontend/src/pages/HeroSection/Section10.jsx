@@ -12,11 +12,12 @@ const Section10 = () => {
     "EASY AND ELEGANT",
     "SIMPLICITY WINS"
   ];
+
   const secondWords = ["exotic cars", "supercars", "dream rides"];
 
   return (
     <div className='flex flex-col md:flex-row h-auto md:h-[600px] overflow-hidden w-full'>
-      
+
       {/* Left Side - Video */}
       <div className="relative h-[220px] md:h-full w-full md:w-1/2 overflow-hidden">
         <motion.video
@@ -31,18 +32,22 @@ const Section10 = () => {
 
       {/* Right Side - Text */}
       <div className='w-full md:w-1/2 bg-black text-white flex flex-col justify-center items-center md:items-start gap-6 md:gap-10 px-4 py-6 md:px-10 md:py-10'>
-        
-        {/* First FlipWords */}
-        <div className="w-full min-h-[50px] md:min-h-[40px] flex items-center">
-          <FlipWords words={firstWords} className='text-white text-2xl md:text-3xl' />
+
+        {/* First FlipWords - Fixed height */}
+        <div className="relative w-full h-[50px] md:h-[40px]">
+          <div className="absolute top-0 left-0 w-full h-full flex items-center">
+            <FlipWords words={firstWords} className='text-white text-2xl md:text-3xl' />
+          </div>
         </div>
 
         {/* Main Heading + Second FlipWords */}
-        <h1 className='text-3xl md:text-5xl leading-tight min-h-[120px]'>
+        <h1 className='text-2xl md:text-5xl leading-tight min-h-[120px]'>
           We are the <span className='text-blue-400'>best.</span><br/>
           When it comes to{" "}
-          <span className="inline-block min-w-[160px] h-[40px]">
-            <FlipWords words={secondWords} className='text-blue-400 text-3xl md:text-4xl' />
+          <span className="relative inline-block min-w-[300px] h-[40px]">
+            <div className="absolute top-0 left-0 w-full h-full flex items-center">
+              <FlipWords words={secondWords} className='text-blue-400 text-2xl md:text-5xl' />
+            </div>
           </span>
         </h1>
 

@@ -49,7 +49,7 @@ const Navbar = () => {
      {/* Menu Links */}
       
       <div className='flex flex-row  items-center gap-3'>
-            <div className={`max-md:fixed  max-md:h-screen max-md:w-full max-md:top-16 max-md:border-t flex flex-col right-0 md:flex-row gap-4 md:gap-8 max-md:p-4 items-start md:items-center border-borderColor transition-all duration-300 z-50 ${open ?'max-md:translate-x-0':'max-md:translate-x-full'}`}>
+            <div className={`max-md:fixed  max-md:h-screen max-md:w-full max-md:top-16 max-md:border-t ${location.pathname === "/" ? "bg-black" : "bg-white"} lg:bg-transparent flex flex-col right-0 md:flex-row gap-4 md:gap-8 max-md:p-4 items-start md:items-center border-borderColor transition-all duration-300 z-50 ${open ?'max-md:translate-x-0':'max-md:translate-x-full'}`}>
                 {menuLinks.map((link,index)=>(
                   <NavLink key={index} to={link.path} onClick={()=>{setFilterCar([]);setHassearch(false);if(window.innerWidth<640){setOpen(false)}}} className={({isActive})=>isActive?'text-primary font-bold':'border-b-2 border-transparent  hover:text-primary font-semibold'}>
                   {link.name}
