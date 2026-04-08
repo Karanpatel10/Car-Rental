@@ -13,7 +13,7 @@ const steps = [
 
 const Section6 = () => { 
   return (
-  <div className='px-6 md:px-16 lg:px-35'>
+  <div className='px-6 md:px-16 lg:px-32'>
     <div className='relative flex flex-col items-center text-center  md:gap-5 bg-cover bg-no-repeat p-10 lg:rounded-full' style={{ backgroundImage: `url(${assets.sheffer_banner})` }} >
      <div className="absolute inset-0 bg-black/70 lg:rounded-full"></div>
              <div className='flex flex-col items-center text-center text-white md:gap-5 z-10'>
@@ -21,11 +21,11 @@ const Section6 = () => {
                   subtitle="You are Important to us. We believe in providing the best car rental experience for your ride. You can always Contact us for any queries."/>
               </div>
               
-            <div className="bg-contain lg:bg-[url('/src/assets/booking_process.png')] bg-center w-auto h-auto lg:h-[400px] bg-no-repeat flex flex-row lg:gap-10 lg:px-25 items-center justify-center flex-wrap z-10 "
+            <div className="bg-contain lg:bg-[url('/src/assets/booking_process.png')] bg-center w-full h-auto lg:h-[350px] bg-no-repeat flex flex-row lg:gap-12  items-center justify-center flex-wrap z-10 "
             >
               {
                 steps.map((step,index)=>(
-                    <div key={index} className='flex flex-col flex-wrap text-white  items-center justify-center font-bold p-9 md:p-15 text-md bg-no-repeat bg-contain bg-center md:hover:scale-105 transition-transform duration-300' style={{backgroundImage:`url(${step.icon})`}}>{`0${index+1}`}
+                    <div key={index} className='flex flex-col flex-wrap text-white  items-center justify-center font-bold p-9 md:p-10 text-md bg-no-repeat bg-contain bg-center md:hover:scale-105 transition-transform duration-300' style={{backgroundImage:`url(${step.icon})`}}>{`0${index+1}`}
                         <p className=' font-medium '>{step.title}</p>
                     </div>
                 ))}

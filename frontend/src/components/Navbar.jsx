@@ -13,7 +13,7 @@ import { GooeyInput } from '../components/ui/gooey-input.tsx'
 
 const Navbar = () => {
   
-  const {user,logout,isOwner,setShowLogin,axios,setIsOwner,navigate,showconfirm,setShowConfirm,setFilterCar,setHassearch}=useAppContext();
+  const {user,setUser,logout,isOwner,setShowLogin,axios,setIsOwner,navigate,showconfirm,setShowConfirm,setFilterCar,setHassearch}=useAppContext();
   const [open,setOpen]=useState(false);
   
 
@@ -22,6 +22,7 @@ const Navbar = () => {
       
           const {data}=await axios.post('/api/owner/change-role');
           if(data.success){
+            setUser({...user,role:'owner'})
             setIsOwner(true);
             toast.success(data.message);
             navigate('/owner');
@@ -55,18 +56,9 @@ const Navbar = () => {
                   {link.name}
                   </NavLink>
                 ))}
-
-                
-                  
-
-
-                    {/* <div className="flex h-6 w-full items-center justify-center"> */}
+                   
                       <GooeyInput placeholder="Search..."/>
-                    {/* </div> */}
-  
-
-                {/* </div> */}
-
+                    
                 <div className='flex flex-col gap-4 md:flex-row'>
                   {
                     user && (

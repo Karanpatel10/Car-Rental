@@ -4,9 +4,9 @@ import Title from '../../components/Title'
 
 const Section7 = () => {
   return (
-    <div className='px-6 md:px-16 lg:px-35 p-35'>
+    <div className='px-6 md:px-16 lg:px-30 py-35'>
         <div className='bg-lightblack flex flex-col md:flex-row justify-between rounded-4xl'>
-            <div className='text-white flex flex-col gap-5  lg:w-1/2 justify-center items-start px-10 xl:px-30 py-10'>
+            <div className='text-white flex flex-col gap-5  lg:w-1/2 justify-center items-start px-10 xl:px-20 py-10'>
             <Title title='Download the app for smoother travel' subtitle='Download the Hertz app to book, modify, and extend rentals, track your points, find support resources, and more.'/>
             <div className='flex flex-row flex-wrap justify-center gap-5 md:gap-10 md:justify-start'>
                 <a href='https://apps.apple.com/us/iphone/apps' target='_blank' rel='noopener noreferrer'>
