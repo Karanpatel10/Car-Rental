@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { cityList } from '../../assets/assets'
 import { Loader2, Search } from 'lucide-react'
 import { motion } from 'motion/react'
@@ -43,6 +43,14 @@ const Section1 = () => {
       toast.error(err.message)
     }
   }
+
+  useEffect(() => {
+    setHassearch(false);
+    setFilterCar([]);
+    setPickupCity("");
+    setPickupDate("");
+    setReturnDate("");
+  }, []);
 
   return (
     <section className="relative md:h-screen w-full flex flex-col overflow-hidden" id="sec1_search">

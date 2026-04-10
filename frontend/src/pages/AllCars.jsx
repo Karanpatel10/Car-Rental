@@ -12,13 +12,17 @@ const Allcars = () => {
     const [searchItem,setSearchItem]=useState("");
     let listtoshow=cars;
 
-    if(hassearch)
+    // if(hassearch)
+    // {
+    //     listtoshow=filterCar
+    // }else{
+    //     listtoshow=cars
+    // }
+    if(filterCar.length>0)
     {
         listtoshow=filterCar
-    }else{
-        listtoshow=cars
     }
-    
+
     const finalCars=listtoshow.filter((car)=>`${car.brand} ${car.model} ${car.category} ${car.fuelType} ${car.location} ${car.feature||""}`.toLowerCase().includes(searchItem.toLowerCase()))
 
     return (

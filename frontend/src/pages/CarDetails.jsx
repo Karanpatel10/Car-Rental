@@ -82,8 +82,7 @@ const CarDetails = () => {
             </div>
 
               <div className='flex flex-row flex-wrap items-center gap-10'>
-                  <button type='submit' disabled={!hassearch}  className={`cursor-pointer order-2 md:order-1 w-full lg:max-w-1/6  py-3 rounded-lg text-white  active:scale-95 transition-transform duration-200 ${hassearch?'bg-blue-600  hover:bg-blue-700':'bg-gray-500 hover:cursor-not-allowed'}`} onClick={()=>{!user?setShowLogin(true):navigate(`/book-details/${id}`)}}>Book Now</button>
-                  {!hassearch && (<NavLink to='/#sec1_search' className='text-red-500 order-1 md:order-2 cursor-pointer hover:underline'>Check availability to book</NavLink>)}
+                  <button type='submit' className={`cursor-pointer w-full lg:max-w-1/6  py-3 rounded-lg text-white  active:scale-95 transition-transform duration-200 ${hassearch?'bg-blue-600  hover:bg-blue-700':'bg-gray-500 hover:bg-green-600'}`} onClick={()=>{navigate(!hassearch ? '/#sec1_search' : (!user?setShowLogin(true):`/book-details/${id}`))}}>{!hassearch ? 'Check Availability' : 'Book Now'}</button>
               </div>
         </div>
       </div>

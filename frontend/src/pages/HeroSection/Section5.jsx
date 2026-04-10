@@ -11,8 +11,11 @@ const Section5 = () => {
   const handleClick=(brand)=>{
     const brandFilter=cars.filter(car=>car.brand.toLowerCase().includes(brand.toLowerCase()));
     setFilterCar(brandFilter);
-    setHassearch(true);
+    // setHassearch(true);
     navigate('/cars');
+
+    console.log('cars',cars);
+    console.log('brandFilter',brandFilter);
   }
 
   return (
