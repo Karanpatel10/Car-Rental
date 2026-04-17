@@ -158,7 +158,7 @@ export function GooeyInput({
   }, [searchText, setExpanded]);
 
   // Outer bubble background styling
-  const bubbleSurfaceClass = "shadow-sm bg-white ring-2 ring-border/60";
+  const bubbleSurfaceClass = "shadow-sm bg-white ";
 
   return (
     <div
@@ -182,7 +182,7 @@ export function GooeyInput({
             disabled={disabled}
             onClick={handleExpand}
             className={cn(
-              "flex h-10 w-full items-center gap-2 rounded-full border-2 border-black bg-white px-4 text-sm font-medium focus-visible:ring-3 focus-visible:ring-ring focus-visible:ring-offset-3 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50",
+              "flex h-10 w-full items-center gap-2 rounded-full border-2 border-black bg-white px-4 text-sm font-medium  disabled:pointer-events-none disabled:opacity-50",
               classNames?.trigger
             )}
           >
@@ -200,7 +200,6 @@ export function GooeyInput({
               placeholder={placeholder}
                className={cn(
     "flex-1 bg-transparent text-gray-900 outline-none placeholder:text-gray-700 rounded-none",
-    "border-l border-r border-gray-300", // <-- only left & right borders
     classNames?.input
   )}
             />

@@ -36,11 +36,9 @@ export const AppProvider=({children})=>{
     const fetchUser=async()=>{
         try{
            const {data}= await axios.get('/api/user/getUserdata');
-           console.log(data);
            if(data.success){
             setUser(data.user)
             if(data?.user?.role === 'admin'){
-                // setIsAdmin(true)
                 navigate('/admin');
             }
             setIsOwner(data.user.role === 'owner')

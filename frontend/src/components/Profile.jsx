@@ -24,10 +24,10 @@ const Profile = () => {
   // Save updated profile
   const handleSave = async(e) => {
     e.preventDefault();
-    setSubLoading(true);
+    setLoading(true);
     // Simulate API call
     try{
-          await axios.put('/api/user/profile-update', {phone: formData.phone,licenseNumber: formData.licenseNumber,Address: formData.Address,DateOfBirth: formData.DateOfBirth,password: formData.password
+          await axios.put('/api/user/profile-update', {phone: formData.phone,licenseNumber: formData.licenseNumber,Address: formData.Address,DateOfBirth: formData.DateOfBirth
               },{headers: {Authorization: token}});
           toast.success("Profile updated successfully!");
           await fetchUser();
@@ -35,21 +35,35 @@ const Profile = () => {
     }catch(err){
       toast.error(err.message);
     }finally{
-      setSubLoading(false);
+      setLoading(false);
     }
   };
 
-  useEffect(() => {
-  if (user) {
+// handle load data
+const loadUserData = () => {
+  if (!user) return;
+  
     setFormData({
       phone: user.phone || "",
-      licenseNumber:user.licenseNumber || "",
+      licenseNumber: user.licenseNumber || "",
       Address: user.Address || "",
-      DateOfBirth: user.DateOfBirth? user.DateOfBirth.split("T")[0]: "",
-      name:user.name || "",
-      email:user.email || "",
+      DateOfBirth: user.DateOfBirth
+        ? user.DateOfBirth.split("T")[0]
+        : "",
+      name: user.name || "",
+      email: user.email || "",
     });
-  }
+
+};
+
+// handle cancel button
+const handleCancel = () => {
+  loadUserData();
+  setEditMode(false);
+}
+
+  useEffect(() => {
+  loadUserData();
 }, [user]);
       
 
@@ -87,7 +101,7 @@ const Profile = () => {
               <div className="flex justify-between items-center">
                 <h2 className="text-3xl font-bold">My Profile</h2>
                 {!editMode && (
-                  <button onClick={() => setEditMode(true)} className="bg-green-600 text-white hover:bg-green-700 px-4 py-2 rounded-lg transition">Edit Profile</button>
+                  <button onClick={() => setEditMode(true)} className="bg-green-600 cursor-pointer text-white hover:bg-green-700 px-4 py-2 rounded-lg transition">Edit Profile</button>
                 )}
               </div>
 
@@ -129,11 +143,11 @@ const Profile = () => {
 
                           {editMode && (
                             <div className="flex gap-4 pt-4">
-                              <button type='submit' disabled={loading} className="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-lg transition disabled:opacity-60 disabled:cursor-not-allowed">
+                              <button type='submit' disabled={loading} className="bg-blue-600 cursor-pointer text-white hover:bg-blue-700 px-4 py-2 rounded-lg transition disabled:opacity-60 disabled:cursor-not-allowed">
                                 {loading ? "Saving..." : "Save"}
                               </button>
 
-                              <button type='button' onClick={() => setEditMode(false)} disabled={loading} className="bg-gray-500 text-white hover:bg-gray-600 px-4 py-2 rounded-lg transition">
+                              <button type='button' onClick={handleCancel} disabled={loading} className="bg-gray-500 cursor-pointer text-white hover:bg-gray-600 px-4 py-2 rounded-lg transition">
                                 Cancel
                               </button>
                             </div>

@@ -1,4 +1,4 @@
-import { Route, Router, Routes, useLocation } from 'react-router-dom'
+import { Navigate, Route, Router, Routes, useLocation } from 'react-router-dom'
 import './App.css'
 import Navbar from './components/Navbar'
 import HeroSection from './pages/HeroSection/HeroSection'
@@ -48,7 +48,6 @@ const isPath = pathname.startsWith('/owner') || pathname.startsWith('/admin');
                 <Route path='/' element={<HeroSection/>}/>
                 <Route path='/car-details/:id' element={<CarDetails/>}/>
                 <Route path='/book-details/:id' element={<BookDetails/>}/>
-                <Route path='/my-bookings' element={<MyBooking/>}/>
                 <Route path='/cars' element={<Allcars/>}/>
                 <Route path='/location' element={<Location/>}/>
                 <Route path='/FAQ' element={<FAQ/>}/>
@@ -56,7 +55,8 @@ const isPath = pathname.startsWith('/owner') || pathname.startsWith('/admin');
                 <Route path='/privacy-policy'element={<PrivacyPolicy/>}/>
                 <Route path='/terms-of-service'element={<TerrmsOfService/>}/>
                 <Route path='/contact-us'element={<ContactUs/>}/>
-                <Route path='/profile' element={<Profile/>}/>
+                <Route path='/profile' element={loading ? null : user ? <Profile/> : <Navigate to="/" replace />}/>
+                <Route path='/my-bookings' element={loading ? null : user ? <MyBooking/> : <Navigate to="/" replace />}/> 
 
                 
                 {/* Owner & Admin Routes */}
