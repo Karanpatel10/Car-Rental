@@ -32,6 +32,7 @@ const MyBookings = () => {
 
     // to check payment status after redirect from stripe payment page and also when user click on back button in browser after payment
     useEffect(()=>{
+        if (paymentStatus) return;
         const urlParams=new URLSearchParams(window.location.search);
         if(urlParams.get('success')==='true'){
             setPaymentStatus("success");
@@ -42,14 +43,24 @@ const MyBookings = () => {
 
     // autoclear payment status after 7 seconds and also when user click on ok button in popup modal
     useEffect(() => {
-        if(paymentStatus) {
-            const timer=setTimeout(()=>{
-                setPaymentStatus(null);
-                window.history.replaceState({}, document.title, "/my-bookings");
-            },4000);
-            return () => clearTimeout(timer);
+    if (!paymentStatus) return;
+
+    const timer = setTimeout(() => {
+        setPaymentStatus(null);
+
+        // ✅ Only clean URL if query exists
+        if (window.location.search.includes("success")) {
+            window.history.replaceState(
+                {},
+                document.title,
+                window.location.pathname
+            );
         }
-    },[paymentStatus])
+
+    }, 4000);
+
+    return () => clearTimeout(timer);
+}, [paymentStatus]);
 
     return (
         <div className='px-6 md:px-16 lg:px-24 xl:px-32'>
