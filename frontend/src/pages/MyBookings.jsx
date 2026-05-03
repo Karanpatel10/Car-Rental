@@ -57,7 +57,7 @@ const MyBookings = () => {
             );
         }
 
-    }, 4000);
+    }, 8000);
 
     return () => clearTimeout(timer);
 }, [paymentStatus]);
@@ -79,8 +79,11 @@ const MyBookings = () => {
 
                         <button className={`mt-5 px-4 py-2 rounded text-white ${paymentStatus === "success"? "bg-green-500": "bg-red-500"}`}
                             onClick={() => {setPaymentStatus(null);
-                                // ✅ remove ?success from URL
-                                window.history.replaceState({},document.title,"/my-bookings");}}>
+                                if (window.location.search.includes("success")) {window.history.replaceState({},document.title,
+            window.location.pathname
+        );
+    }
+}}>
                             OK
                         </button>
                     </motion.div>
