@@ -42,53 +42,53 @@ const MyBookings = () => {
     },[])
 
     // autoclear payment status after 7 seconds and also when user click on ok button in popup modal
-    useEffect(() => {
-    if (!paymentStatus) return;
+//     useEffect(() => {
+//     if (!paymentStatus) return;
 
-    const timer = setTimeout(() => {
-        setPaymentStatus(null);
+//     const timer = setTimeout(() => {
+//         setPaymentStatus(null);
 
-        // ✅ Only clean URL if query exists
-        if (window.location.search.includes("success")) {
-            window.history.replaceState(
-                {},
-                document.title,
-                window.location.pathname
-            );
-        }
+//         // ✅ Only clean URL if query exists
+//         if (window.location.search.includes("success")) {
+//             window.history.replaceState(
+//                 {},
+//                 document.title,
+//                 window.location.pathname
+//             );
+//         }
 
-    }, 8000);
+//     }, 8000);
 
-    return () => clearTimeout(timer);
-}, [paymentStatus]);
+//     return () => clearTimeout(timer);
+// }, [paymentStatus]);
 
-    return (
-        <div className='px-6 md:px-16 lg:px-24 xl:px-32'>
+//     return (
+//         <div className='px-6 md:px-16 lg:px-24 xl:px-32'>
 
-        {paymentStatus && (
-                <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
-                    <motion.div initial={{scale:0.7,opacity:0}} animate={{scale:1,opacity:1}} transition={{duration:0.3}} className="bg-white p-6 rounded-lg text-center w-[90%] max-w-md">
+//         {paymentStatus && (
+//                 <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+//                     <motion.div initial={{scale:0.7,opacity:0}} animate={{scale:1,opacity:1}} transition={{duration:0.3}} className="bg-white p-6 rounded-lg text-center w-[90%] max-w-md">
 
-                        <h2 className="text-2xl font-bold">
-                            {paymentStatus === "success"? "Payment Successful 🎉": "Payment Failed ❌"}
-                        </h2>
+//                         <h2 className="text-2xl font-bold">
+//                             {paymentStatus === "success"? "Payment Successful 🎉": "Payment Failed ❌"}
+//                         </h2>
 
-                        <p className="mt-3 text-gray-600">
-                            {paymentStatus === "success"? "Your booking has been confirmed.": "Your payment was cancelled or failed."}
-                        </p>
+//                         <p className="mt-3 text-gray-600">
+//                             {paymentStatus === "success"? "Your booking has been confirmed.": "Your payment was cancelled or failed."}
+//                         </p>
 
-                        <button className={`mt-5 px-4 py-2 rounded text-white ${paymentStatus === "success"? "bg-green-500": "bg-red-500"}`}
-                            onClick={() => {setPaymentStatus(null);
-                                if (window.location.search.includes("success")) {window.history.replaceState({},document.title,
-            window.location.pathname
-        );
-    }
-}}>
-                            OK
-                        </button>
-                    </motion.div>
-                </div>
-            )}
+//                         <button className={`mt-5 px-4 py-2 rounded text-white ${paymentStatus === "success"? "bg-green-500": "bg-red-500"}`}
+//                             onClick={() => {setPaymentStatus(null);
+//                                 if (window.location.search.includes("success")) {window.history.replaceState({},document.title,
+//             window.location.pathname
+//         );
+//     }
+// }}>
+//                             OK
+//                         </button>
+//                     </motion.div>
+//                 </div>
+//             )}
 
             <h1 className='flex text-3xl my-15 p-2 font-semibold justify-start'>My Bookings</h1>
             <div className="flex flex-col gap-15 my-20">
