@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 
 const MyBookings = () => {
-    const { axios, user, setLoading, navigate } = useAppContext();
+    const { axios, user, setLoading } = useAppContext();
     const [mybooking, setMyBooking] = useState([]);
     const [paymentStatus, setPaymentStatus] = useState(null);
     const location = useLocation();
@@ -29,37 +29,31 @@ const MyBookings = () => {
         }
     };
 
-    // Load bookings when user is ready
+    // Load bookings
     useEffect(() => {
         if (user?._id) {
             fetchMyBooking();
         }
     }, [user?._id]);
 
-    // Handle Stripe redirect
+    // Handle Stripe redirect (NO navigation here → prevents refresh loop)
     useEffect(() => {
         const params = new URLSearchParams(location.search);
         const success = params.get("success");
 
         if (success === "true" || success === "false") {
             setPaymentStatus(success === "true" ? "success" : "failure");
-
-            // clean URL after state update renders
-            setTimeout(() => {
-                navigate("/my-bookings", { replace: true });
-            }, 100);
         }
-    }, [location.search, navigate]);
+    }, [location.search]);
 
-    // Auto close modal + refresh bookings
+    // Clean URL once when payment status appears
     useEffect(() => {
         if (!paymentStatus) return;
 
-        // refresh bookings immediately
-        fetchMyBooking();
+        window.history.replaceState({}, document.title, "/my-bookings");
 
-        // close modal after 5s
         const timer = setTimeout(() => {
+            fetchMyBooking();
             setPaymentStatus(null);
         }, 5000);
 
@@ -69,7 +63,7 @@ const MyBookings = () => {
     return (
         <div className="px-6 md:px-16 lg:px-24 xl:px-32">
 
-            {/* Payment Modal */}
+            {/* Modal */}
             {paymentStatus && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
                     <motion.div
@@ -109,7 +103,7 @@ const MyBookings = () => {
                 My Bookings
             </h1>
 
-            {/* Bookings List */}
+            {/* Bookings */}
             <div className="flex flex-col gap-15 my-20">
                 {mybooking.map((booking, index) => (
                     <div key={booking._id}>
@@ -117,6 +111,7 @@ const MyBookings = () => {
 
                             {/* Left */}
                             <div className="flex flex-col md:flex-row gap-10 md:gap-20 p-5">
+
                                 <div>
                                     <img
                                         src={booking.car.image[0]}
@@ -134,6 +129,7 @@ const MyBookings = () => {
                                 <div className="flex flex-col gap-3">
                                     <p>
                                         Booking #{index + 1}
+
                                         <span className={`ml-3 p-2 rounded-lg ${
                                             booking.payment === "unpaid"
                                                 ? "text-red-500 bg-red-100"
