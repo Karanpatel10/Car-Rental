@@ -56,8 +56,7 @@ const isPath = pathname.startsWith('/owner') || pathname.startsWith('/admin');
                 <Route path='/terms-of-service'element={<TerrmsOfService/>}/>
                 <Route path='/contact-us'element={<ContactUs/>}/>
                 <Route path='/profile' element={loading ? <Loading/> : user ? <Profile/> : <Navigate to="/" replace />}/>
-                <Route path="/my-bookings"element={loading ? (<Loading />) : user === null ? (<Navigate to="/" replace />) : (<MyBooking />)}/>
-
+                <Route path="/my-bookings" element={loading ? (<Loading />) : user === null ? (<Loading />) : user ? (<MyBookings />) : (<Navigate to="/" replace />)}/>
                 
                 {/* Owner & Admin Routes */}
                     <Route path={`/${user?.role}`} element={<SLayoutDashbrd/>}>
