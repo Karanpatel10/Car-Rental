@@ -136,7 +136,7 @@ const MyBookings = () => {
                                                 ? "text-red-500 bg-red-100"
                                                 : "text-green-500 bg-green-100"
                                         }`}>
-                                            {booking.payment}
+                                            ID:{booking._id}
                                         </span>
 
                                         <span className={`ml-3 p-2 rounded-lg ${
