@@ -47,7 +47,6 @@ const BookDetails = () => {
                 items:[{name:carDetails.brand,price:pricecalc,quantity:1}],
                 metadata:{
                     car:id,
-                    // user:user?user._id:null,
                     pickupDate,
                     returnDate,
                     totalPrice,

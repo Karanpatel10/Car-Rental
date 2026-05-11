@@ -25,6 +25,7 @@ import ContactUs from './components/ContactUs'
 import PrivacyPolicy from './components/PrivacyPolicy'
 import Profile from './components/Profile'
 import TerrmsOfService from './components/TerrmsOfService'
+import MyBookings from './pages/MyBookings'
 
 function App() {
   const {showLogin,loading,isOwner,isAdmin,user}=useAppContext()
@@ -56,8 +57,9 @@ const isPath = pathname.startsWith('/owner') || pathname.startsWith('/admin');
                 <Route path='/terms-of-service'element={<TerrmsOfService/>}/>
                 <Route path='/contact-us'element={<ContactUs/>}/>
                 <Route path='/profile' element={loading ? <Loading/> : user ? <Profile/> : <Navigate to="/" replace />}/>
-                <Route path="/my-bookings" element={loading ? (<Loading />) : user === null ? (<Loading />) : user ? (<MyBooking/>) : (<Navigate to="/" replace />)}/>
-                
+                {/* <Route path="/my-bookings" element={loading || user === null ? (<Loading />) : user ? (<MyBooking/>) : (<Navigate to="/" replace />)}/> */}
+                <Route path='my-bookings' element={<MyBookings/>}/>
+
                 {/* Owner & Admin Routes */}
                     <Route path={`/${user?.role}`} element={<SLayoutDashbrd/>}>
                         <Route index element={<SDashboard/>}/>

@@ -8,9 +8,7 @@ import axios from "axios";
 const Profile = () => {
 
   const {user,token,fetchUser,loading,setLoading}=useAppContext();
-
   const [editMode, setEditMode] = useState(false);
- 
   const [formData, setFormData] = useState({phone: "",licenseNumber: "",Address: "",DateOfBirth: "",avatar: null,avatarPreview: null});
  
 

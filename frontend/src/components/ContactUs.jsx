@@ -10,9 +10,7 @@ const ContactUs = () => {
                       src={assets.contact_banner}
                       alt="contact_us_banner"
                       className="w-full h-full object-cover filter  contrast-150"
-                    />
-                    {/* <div className="absolute inset-0 bg-black/60" /> */}
-
+                    />    
           </div>
 
    
