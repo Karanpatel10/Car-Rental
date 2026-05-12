@@ -28,16 +28,12 @@ const MyBookings = () => {
 
     // Load bookings
     useEffect(() => {
-       if (user === undefined) return;
+       
+        if (user?._id) {
+            fetchMyBooking();
+        } 
 
-        if (!user?._id) {
-           setShowLogin(true);
-            return;
-        }
-            setShowLogin(false);
-         fetchMyBooking();
-
-    }, [user]);
+    }, [user?._id]);
 
     // Handle Stripe redirect (NO navigation here → prevents refresh loop)
     useEffect(() => {
@@ -109,8 +105,8 @@ const MyBookings = () => {
                                     <p>
                                         Booking #{index + 1}
 
-                                        <span className={`ml-3 p-2 rounded-lg ${booking.payment === "unpaid"? "text-red-500 bg-red-100": "text-green-500 bg-green-100"}`}>
-                                            {booking.payment === "unpaid"?"unPaid":"Paid"}
+                                        <span className={`ml-3 p-2 rounded-lg ${booking.payment ?"text-green-500 bg-green-100":"text-red-500 bg-red-100"}`}>
+                                            {booking.payment?"Paid":"unpaid"}
                                         </span>
 
                                         <span className={`ml-3 p-2 rounded-lg ${booking.status === "confirmed"? "text-green-500 bg-green-100": "text-red-500 bg-red-100"}`}>
