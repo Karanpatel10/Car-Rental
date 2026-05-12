@@ -34,7 +34,7 @@ const MyBookings = () => {
            setShowLogin(true);
             return;
         }
-        
+            setShowLogin(false);
          fetchMyBooking();
 
     }, [user]);
@@ -64,7 +64,7 @@ const MyBookings = () => {
     }, [paymentStatus]);
 
     return (
-        <div className="px-6 md:px-16 lg:px-24 xl:px-32">
+        <div className="px-6 md:px-16 lg:px-24 xl:px-32 flex flex-col min-h-screen">
            
             {/* Modal */}
             {paymentStatus && (
@@ -91,7 +91,7 @@ const MyBookings = () => {
             </h1>
 
             {/* Bookings */}
-            <div className="flex flex-col gap-15 my-20">
+            <div className="flex flex-col gap-15 my-20 flex-1">
                 {mybooking.map((booking, index) => (
                     <div key={booking._id}>
                         <div className="flex flex-col md:flex-row justify-between items-center shadow-[0_1px_10px_rgba(0,0,0,0.3)] md:p-5 rounded-lg">
