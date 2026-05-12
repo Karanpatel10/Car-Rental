@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 
 const MyBookings = () => {
-    const { axios, user, setLoading,setShowLogin } = useAppContext();
+    const { axios, user, setLoading} = useAppContext();
     const [mybooking, setMyBooking] = useState([]);
     const [paymentStatus, setPaymentStatus] = useState(null);
     const location = useLocation();
@@ -14,8 +14,8 @@ const MyBookings = () => {
     // Fetch bookings
     const fetchMyBooking = async () => {
         try {
+             setLoading(true);
             const { data } = await axios.get("/api/booking/booking-list");
-
             if (data.success) {
                 setMyBooking(data.bookings);
             } else {
@@ -23,6 +23,8 @@ const MyBookings = () => {
             }
         } catch (err) {
             console.log(err.message);
+        }finally{
+            setLoading(false);
         }
     };
 
