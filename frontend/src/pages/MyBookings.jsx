@@ -14,7 +14,6 @@ const MyBookings = () => {
     // Fetch bookings
     const fetchMyBooking = async () => {
         try {
-             setLoading(true);
             const { data } = await axios.get("/api/booking/booking-list");
             if (data.success) {
                 setMyBooking(data.bookings);
@@ -23,8 +22,6 @@ const MyBookings = () => {
             }
         } catch (err) {
             console.log(err.message);
-        }finally{
-            setLoading(false);
         }
     };
 
