@@ -11,7 +11,7 @@ import { useAppContext } from '../AppContext';
     
 const BookDetails = () => {
     const {id}=useParams();
-    const {navigate,carDetails,returnDate,pickupDate,loading,setLoading}=useAppContext();
+    const {navigate,carDetails,returnDate,pickupDate,loading,setLoading,currency}=useAppContext();
 
     const totalDay=Math.ceil((new Date(returnDate) - new Date(pickupDate)) /(1000 * 60 * 60 * 24));
     const pricecalc=(totalDay == 0 ? 1 : totalDay)*carDetails.pricePerDay;
@@ -87,7 +87,7 @@ const BookDetails = () => {
                         <h1 className='font-bold text-xl'>Summary</h1>
                         <p>Booking Details</p>
                     </div>
-                    <div className='font-extrabold text-2xl flex justify-between'><span>{carDetails.brand}</span><span className='font-light text-end'>{carDetails.pricePerDay}$/Day</span></div>  
+                    <div className='font-extrabold text-2xl flex justify-between'><span>{carDetails.brand}</span><span className='font-light text-end'>{currency}&nbsp;{carDetails.pricePerDay}/Day</span></div>  
 
                     {/* order details */}
                     <div className='grid md:grid-cols-2 shadow-2xl bg-white rounded-2xl p-10 my-10 gap-14'>
@@ -142,7 +142,7 @@ const BookDetails = () => {
                             {
                             BookData.second_part.map((data,index)=>(
                                 <div key={index} className='flex flex-col'>
-                                    <p className='flex justify-between'><label>{data.title}</label><span>{data.value}</span></p>
+                                    <p className='flex justify-between'><label>{data.title}</label><span>{currency}&nbsp;{data.value}</span></p>
                                 </div>
                             ))
                             }
