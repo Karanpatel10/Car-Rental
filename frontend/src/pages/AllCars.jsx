@@ -12,12 +12,7 @@ const Allcars = () => {
     const [searchItem,setSearchItem]=useState("");
     let listtoshow=cars;
 
-    // if(hassearch)
-    // {
-    //     listtoshow=filterCar
-    // }else{
-    //     listtoshow=cars
-    // }
+    
     if(filterCar.length>0)
     {
         listtoshow=filterCar

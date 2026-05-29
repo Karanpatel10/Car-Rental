@@ -13,9 +13,6 @@ const ConformModel = ({onConform,onCancel,title}) => {
                 </svg>
             </div>
             <h2 className="text-gray-900 font-medium mt-4 text-xl">{title}</h2>
-            {/* <p className="text-sm text-gray-600 mt-2 text-center">
-                {title}
-            </p> */}
             <div className="flex items-center justify-center gap-4 mt-5 w-full">
                 <button type="button" onClick={()=>setShowConfirm(false)} className="w-full md:w-36 h-10 cursor-pointer rounded-md border border-gray-300 bg-white text-gray-600 font-medium text-sm hover:bg-gray-100 active:scale-95 transition">
                     Cancel

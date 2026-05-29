@@ -22,7 +22,7 @@ export const checkAvalibiltyofCar=async(req,res)=>{
         // check car availibity give Date
         const availibleCarsPromises=cars.map(async(car)=>{
          const isAvailble=await checkAvalibilty(car,pickupDate,returnDate)
-         console.log(isAvailble);
+        //  console.log(isAvailble);
          return {...car._doc,isAvailable:isAvailble}
         })
 

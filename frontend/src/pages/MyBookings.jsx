@@ -3,11 +3,13 @@ import { useAppContext } from "../AppContext";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
 const MyBookings = () => {
     const{axios,user,setLoading}=useAppContext();
     const[mybooking,setMyBooking]=useState([]);
     const [paymentStatus,setPaymentStatus]=useState(null);
+    const location=useLocation();
    
     const fetchMyBooking=async()=>{
         try{
@@ -31,22 +33,24 @@ const MyBookings = () => {
     },[user])
 
     // to check payment status after redirect from stripe payment page and also when user click on back button in browser after payment
-    useEffect(()=>{
-        const urlParams=new URLSearchParams(window.location.search);
-        if(urlParams.get('success')==='true'){
-            setPaymentStatus("success");
-        }else if(urlParams.get('success')==='false'){
-            setPaymentStatus("failure");
-        }
-    },[])
+    useEffect(() => {
+    const urlParams = new URLSearchParams(location.search);
 
-    // autoclear payment status after 7 seconds and also when user click on ok button in popup modal
+    if (urlParams.get("success") === "true") {
+        setPaymentStatus("success");
+    } 
+    else if (urlParams.get("success") === "false") {
+        setPaymentStatus("failure");
+    }
+    }, [location.search]);
+
+    // autoclear payment status after 5 seconds and also when user click on ok button in popup modal
     useEffect(() => {
         if(paymentStatus) {
             const timer=setTimeout(()=>{
                 setPaymentStatus(null);
-                window.history.replaceState({}, document.title, "/my-bookings");
-            },4000);
+               window.history.replaceState(null, "", "/my-bookings");
+            },5000);
             return () => clearTimeout(timer);
         }
     },[paymentStatus])
