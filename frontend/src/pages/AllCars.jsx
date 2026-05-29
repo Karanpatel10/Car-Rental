@@ -10,13 +10,10 @@ import { motion } from "motion/react";
 const Allcars = () => {
     const {cars,navigate,filterCar,hassearch} = useAppContext();
     const [searchItem,setSearchItem]=useState("");
-    let listtoshow=cars;
+    // let listtoshow=cars;
 
     
-    if(filterCar.length>0)
-    {
-        listtoshow=filterCar
-    }
+   let listtoshow = hassearch ? filterCar : cars;
 
     const finalCars=listtoshow.filter((car)=>`${car.brand} ${car.model} ${car.category} ${car.fuelType} ${car.location} ${car.feature||""}`.toLowerCase().includes(searchItem.toLowerCase()))
 
