@@ -15,10 +15,10 @@ return bookings.length === 0;
 export const checkAvalibiltyofCar=async(req,res)=>{
     try{
         const {pickupCity,pickupDate,returnDate}=req.body
-        // console.log(req.body);
+      
         // fetch all avalible car for the location
         const cars=await Cars.find({location:pickupCity,isAvailable:true});
-        // console.log(cars);
+     
         // check car availibity give Date
         const availibleCarsPromises=cars.map(async(car)=>{
          const isAvailble=await checkAvalibilty(car,pickupDate,returnDate)
@@ -27,7 +27,7 @@ export const checkAvalibiltyofCar=async(req,res)=>{
         })
 
         let availbleCars=await Promise.all(availibleCarsPromises);
-        // console.log(availbleCars)
+
         availbleCars=availbleCars.filter(car=>car.isAvailable === true)
         res.status(201).json({success:true,message:'Availble Cars',availbleCars})
     }catch(err){

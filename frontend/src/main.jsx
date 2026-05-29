@@ -12,7 +12,7 @@ createRoot(document.getElementById('root')).render(
     <AppProvider>
       <MotionConfig viewport={{once:true}}>
         <ReactLenis root>
-      <App />
+          <App />
       </ReactLenis> 
       </MotionConfig>
     </AppProvider>

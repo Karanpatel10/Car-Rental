@@ -5,7 +5,6 @@ export const protect=async(req,res,next)=>{
     const token=req.headers.authorization;
     if(!token)
     {        
-            // console.log("Not Authorized No Token");
              return res.json({success:'false',message:'Not Authorized'})
     }
     try{
