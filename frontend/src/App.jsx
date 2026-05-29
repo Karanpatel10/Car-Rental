@@ -6,7 +6,6 @@ import Footer from './components/Footer'
 import Login from './components/Login'
 import { useEffect} from 'react'
 import CarDetails from './pages/CarDetails'
-import MyBooking from './pages/MyBookings'
 import Allcars from './pages/AllCars'
 import Loading from './components/Loading'
 import BookDetails from './pages/BookDetails'
@@ -25,6 +24,7 @@ import ContactUs from './components/ContactUs'
 import PrivacyPolicy from './components/PrivacyPolicy'
 import Profile from './components/Profile'
 import TerrmsOfService from './components/TerrmsOfService'
+import MyBookings from './pages/MyBookings'
 
 function App() {
   const {showLogin,loading,isOwner,isAdmin,user}=useAppContext()
@@ -38,37 +38,38 @@ const isPath = pathname.startsWith('/owner') || pathname.startsWith('/admin');
  }, [location.pathname])
 
   return (
-    <div>  
+    <div className='flex flex-col min-h-screen'>  
 
       {loading && !isOwner && !isAdmin && <Loading/>}
       <Toaster/>  
           {showLogin && <Login/>} 
             {!isPath && <Navbar/>}
-              <Routes>
-                <Route path='/' element={<HeroSection/>}/>
-                <Route path='/car-details/:id' element={<CarDetails/>}/>
-                <Route path='/book-details/:id' element={<BookDetails/>}/>
-                <Route path='/cars' element={<Allcars/>}/>
-                <Route path='/location' element={<Location/>}/>
-                <Route path='/FAQ' element={<FAQ/>}/>
-                <Route path='/About'element={<About/>}/>
-                <Route path='/privacy-policy'element={<PrivacyPolicy/>}/>
-                <Route path='/terms-of-service'element={<TerrmsOfService/>}/>
-                <Route path='/contact-us'element={<ContactUs/>}/>
-                <Route path='/profile' element={loading ? null : user ? <Profile/> : <Navigate to="/" replace />}/>
-                <Route path='/my-bookings' element={loading ? null : user ? <MyBooking/> : <Navigate to="/" replace />}/> 
+                  <div className='flex-1'>
+                            <Routes>
+                                  <Route path='/' element={<HeroSection/>}/>
+                                  <Route path='/car-details/:id' element={<CarDetails/>}/>
+                                  <Route path='/book-details/:id' element={<BookDetails/>}/>
+                                  <Route path='/cars' element={<Allcars/>}/>
+                                  <Route path='/location' element={<Location/>}/>
+                                  <Route path='/FAQ' element={<FAQ/>}/>
+                                  <Route path='/About'element={<About/>}/>
+                                  <Route path='/privacy-policy'element={<PrivacyPolicy/>}/>
+                                  <Route path='/terms-of-service'element={<TerrmsOfService/>}/>
+                                  <Route path='/contact-us'element={<ContactUs/>}/>
+                                  <Route path='/profile' element={loading ? <Loading/> : user ? <Profile/> : <Navigate to="/" replace />}/>
+                                  <Route path="/my-bookings" element={loading?<Loading/>: user ? (<MyBookings/>) : (<Navigate to="/" replace />)}/>
+                                  
 
-                
-                {/* Owner & Admin Routes */}
-                    <Route path={`/${user?.role}`} element={<SLayoutDashbrd/>}>
-                        <Route index element={<SDashboard/>}/>
-                        <Route path='add-car' element={<AddCar/>}/>
-                        <Route path='manage-users' element={<AdUser/>}/>
-                        <Route path='manage-cars'element={<SMCar/>}/>
-                        <Route path='manage-bookings' element={<SMBooking/>}/>
-                    </Route>
-                
-              </Routes>
+                                  {/* Owner & Admin Routes */}
+                                      <Route path={`/${user?.role}`} element={<SLayoutDashbrd/>}>
+                                          <Route index element={<SDashboard/>}/>
+                                          <Route path='add-car' element={<AddCar/>}/>
+                                          <Route path='manage-users' element={<AdUser/>}/>
+                                          <Route path='manage-cars'element={<SMCar/>}/>
+                                          <Route path='manage-bookings' element={<SMBooking/>}/>
+                                      </Route>
+                         </Routes>
+                   </div> 
             {!isPath && <Footer/>}
     </div>
   )
