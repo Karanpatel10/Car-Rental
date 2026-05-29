@@ -27,7 +27,7 @@ import TerrmsOfService from './components/TerrmsOfService'
 import MyBookings from './pages/MyBookings'
 
 function App() {
-  const {showLogin,loading,isOwner,isAdmin,user}=useAppContext()
+  const {showLogin,loading,isOwner,isAdmin,user,authLoading}=useAppContext()
  const pathname = useLocation().pathname;
 const isPath = pathname.startsWith('/owner') || pathname.startsWith('/admin');
 
@@ -57,7 +57,7 @@ const isPath = pathname.startsWith('/owner') || pathname.startsWith('/admin');
                                   <Route path='/terms-of-service'element={<TerrmsOfService/>}/>
                                   <Route path='/contact-us'element={<ContactUs/>}/>
                                   <Route path='/profile' element={loading ? <Loading/> : user ? <Profile/> : <Navigate to="/" replace />}/>
-                                  <Route path="/my-bookings" element={loading?<Loading/>:<MyBookings/>}/>
+                                  <Route path="/my-bookings" element={authLoading?<Loading/>:<MyBookings/>}/>
                                   
 
                                   {/* Owner & Admin Routes */}

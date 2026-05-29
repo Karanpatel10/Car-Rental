@@ -14,6 +14,7 @@ export const AppProvider=({children})=>{
     // Auth
     const [token,setToken]=useState(null);
     const [user,setUser]=useState(null);
+    const [authLoading, setAuthLoading] = useState(true);
 
     // UI
     const [loading,setLoading]=useState(false);
@@ -112,16 +113,19 @@ export const AppProvider=({children})=>{
     
 
     // useEffect to fetch when token avalibale
-    useEffect(()=>{
-        const token=localStorage.getItem('token');
-        if(token)
-        {
-            setToken(token);
-            axios.defaults.headers.common['Authorization']=`${token}`
-            fetchUser();
-        }
-        fetchCars();
-    },[token])
+    useEffect(() => {
+   const init = async () => {
+      const token = localStorage.getItem('token');
+      if (token) {
+         setToken(token);
+         axios.defaults.headers.common['Authorization'] = token;
+         await fetchUser();
+      }
+      await fetchCars();
+       setAuthLoading(false);
+    };
+    init();
+    }, []);
 
     const value={ 
         carDetails,setCarDetails,navigate,currency,axios,user,setUser,loading,setLoading,token,setToken,isOwner,setIsOwner,fetchUser,fetchCars,logout,showLogin,setShowLogin,cars,setCars,pickupDate,returnDate,setPickupDate,setReturnDate,booking,setBooking,fetchBookings,pickupCity,setPickupCity,filterCar,setFilterCar,hassearch,setHassearch,showconfirm,setShowConfirm}
