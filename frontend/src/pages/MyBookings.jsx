@@ -23,7 +23,7 @@ const MyBookings = () => {
         }catch(err){
             console.log(err.message)
         }finally{
-            setLoading(false);
+            setLoading(false)
         }
     }
    
