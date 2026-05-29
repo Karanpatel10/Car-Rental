@@ -125,7 +125,7 @@ export const AppProvider=({children})=>{
        setAuthLoading(false);
     };
     init();
-    }, []);
+    }, [token]);
 
     const value={ 
         carDetails,setCarDetails,navigate,currency,axios,user,setUser,loading,setLoading,token,setToken,isOwner,setIsOwner,fetchUser,fetchCars,logout,showLogin,setShowLogin,cars,setCars,pickupDate,returnDate,setPickupDate,setReturnDate,booking,setBooking,fetchBookings,pickupCity,setPickupCity,filterCar,setFilterCar,hassearch,setHassearch,showconfirm,setShowConfirm}
